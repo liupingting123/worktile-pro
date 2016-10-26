@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>register</title>
+  <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" type="text/css" href="./example.component.css">
+
+</head>
+<body>
+     <div id="wrap-all" class=""><div id="main" class="inner ">
+<div class="other-warp login-wrap ng-scope" data-ng-controller="userLoginCtrl" ng-init="vm.weixin_unionid=''">
+  <div wt-minheight="58" class="single-panel clearfix">
+    <!-- ngIf: status.code == 0 --><div class="single-panel-inner login-mini ng-scope" ng-if="status.code == 0">
+      <div class="single-panel-header login_logo_area">
+        <!--<h3>登录</h3>-->
+        <a class="logo-min" href="/" title="Worktile">
+          <i class="wtfont wtf-worktile"></i>
+          <i class="wtfont wtf-worktiletext"></i>
+        </a>
+      </div>
+      <div class="single-panel-body">
+        <div ng-hide="vm.weixin_login" class="single-panel-section">
+          <form w5c-form-validate="" name="login_form" class="form-horizontal wt-form ng-valid-minlength ng-dirty ng-valid-parse ng-valid ng-valid-required" novalidate="">
+
+            <div class="form-group">
+              <div class="input-group-">
+                <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+                <input class="form-control valid ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched" type="text" placeholder="用户名" name="username" ng-model="signin_user.name" required=""  wt-autofocus="" tabindex="1">
+                <!-- <div [hidden]="name.valid || name.pristine" 
+                   class="alert alert-danger">
+                用户名不能为空
+              </div> -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group-">
+                <!--<span class="input-group-addon fs_17"><i class="fa fa-lock"></i></span>-->
+                <input class="form-control ng-untouched valid ng-valid-minlength ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" type="password" placeholder="密码" name="password" ng-model="signin_user.password" required="" ng-minlength="6" tabindex="2" onKeyUp=pwStrength(this.value) onBlur=pwStrength(this.value)>
+                
+              </div>
+            </div>
+            
+
+            <div class="form-group">
+              <div class="input-group-">
+                <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+                <input class="form-control valid ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched" type="text" placeholder="昵称" name="username" ng-model="signin_user.name" required=""  wt-autofocus="" tabindex="1" >
+                <!-- <div [hidden]="name.valid || name.pristine" 
+                   class="alert alert-danger">
+                用户名不能为空
+              </div> -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group-">
+                <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+                <input class="form-control valid ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched" type="text" placeholder="电子邮件" name="username" ng-model="signin_user.name" required=""  wt-autofocus="" tabindex="1" >
+                <!-- <div [hidden]="name.valid || name.pristine" 
+                   class="alert alert-danger">
+                用户名不能为空
+              </div> -->
+              </div>
+            </div>
+
+            <!-- ngIf: iscode -->
+
+            <!-- ngIf: login_form.$errors.length > 0 -->
+            <div class="form-group">
+              <button w5c-form-submit="signin(login_form)" class="btn btn-success btn-lg btn-block ng-scope" type="button" tabindex="4" data-loading-text="登录中…" wt-loading-status="signin_user.is_login_ing" translate="outer_login.btn_login">注册</button>
+            </div>
+          </form>
+        </div>
+        <div id="weixin_qr_code" class="login_weixin_qr_code text-center ng-hide" ng-show="vm.weixin_login"></div>
+
+      </div>
+      <div class="single-panel-footer" ng-hide="vm.weixin_login">
+        <a href="/" ng-click="$root.go_to_signup($event)" translate="outer_login.link_signup" class="ng-scope text-align" >返回登录</a>
+      </div>
+    </div><!-- end ngIf: status.code == 0 -->
+
+    <!-- ngIf: status.code == 1 -->
+
+    <!-- ngIf: status.code == 2 -->
+
+    
+  </div>
+</div>
+<footer class="text-center color_text_lighter login-footer"><i class="wtfont wtf-worktile"></i><i class="wtfont wtf-worktiletext" style="font-size: 60px"></i>© 2015 Worktile.com <span class="ml-10 mr_10">进击前端组</span></footer>
+
+
+</div></div>
+</body>
+</html>
+
