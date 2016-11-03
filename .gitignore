@@ -1,5 +1,5 @@
-build
-dist
 node_modules
-typings
-
+dist
+.tmp
+bower_components
+test/bower_components
