@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>worktile</title>
+   <link rel="stylesheet" href="styles/shared.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="styles/tast.css">
+   <script src="/bower_components/jquery/dist/jquery.js"></script>
+   <script type="text/javascript">
+    $(document).ready(function(){
+ $(".section-header").click(function(){
+  $(this).addClass("current") //给当前元素添加"current"样式
+  .next().show() //下一个元素显示
+  .parent().siblings().children("a").removeClass("current")
+  //父元素的兄弟元素的子元素<a>移除"current"样式
+  .next().hide(); //它们的下一个元素隐藏
+  return false;
+ });
+});
+</script>
+</head>
+<body>
+	<div class="main-layout ng-scope">
+    <div class="app-nav-area ng-scope">
+      <div class="top-area">
+        <a href="javascript:;" class="team-logo pbox-trigger" data-placement="right" data-align="top">
+          <img width="40" align="center" alt="cheer" title="cheer" src="https://s3.cn-north-1.amazonaws.com.cn/lclogo/team_logo_default.png" /></a>
+      </div>
+      <div class="middle-area">
+        <ul>
+          <li>
+            <a href="./news.html">
+              <i class="lcfont lc-messages-o"></i>
+            </a>
+            <span class="nav-tooltip ng-scope">消息</span>
+          </li>
+
+          <li class="ng-scope active">
+            <a href="javascript:;">
+              <i class="lcfont lc-task-o"></i>
+            </a>
+            <span class="nav-tooltip">任务</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-schedule-o"></i>
+            </a>
+            <span class="nav-tooltip ">日历</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-drive-o"></i>
+            </a>
+            <span class="nav-tooltip">网盘</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-weekly-o"></i>
+            </a>
+            <span class="nav-tooltip ">简报</span></li>
+         </ul>
+      </div>
+    	</div>
+
+
+    <div class="main-body">
+      <!--  侧边栏 -->
+      <div class="main-body-side">
+          <div class="header">
+            <span class="title ng-scope">任务</span>
+            <div class="more ng-scope btn-add">
+             <a href="/add.html"><i class="lcfont lc-add-project"></i></a>
+            </div>
+          </div>
+          <div class="body-list">
+              <div class="search-area">
+                 <i class="lcfont lc-search"></i> 
+                 <input type="text" class="form-control" placeholder="搜索任务">
+              </div>
+
+              <div class="toc-section">
+                <div class="section-header">
+                  <a href="javascript:;" class="expand-icon">
+                    <i class="fa fa-caret-down" style=""></i>
+                  </a>
+                  <a href="javascript:;" class="title ng-scope">工作台</a> 
+                  <a href="javascript:;" class="action pbox-trigger" data-align="left">
+                  <i class="lcfont lc-approval-pending"></i>
+                  </a>
+                </div>
+                <div class="section-body in collapse" style="height: auto;">
+                  <ul>
+                    <li>
+                      <a class="section-item ng-binding active" href="#mytask">
+                      <i class="lcfont lc-dashboard-o item-icon"></i>我的任务</a>
+                      <a class="section-item ng-binding" href="./joinTask.html">
+                      <i class="lcfont lc-following-o item-icon"></i>我参与的任务
+                      </a>
+                      </li>
+                      <div class="ng-isolate-scope"></div>
+                  </ul>
+                </div>
+              </div>
+
+               <div class="toc-section">
+                <div class="section-header">
+                  <a href="javascript:;" class="expand-icon">
+                    <i class="fa fa-caret-down" style=""></i>
+                  </a>
+                  <a href="javascript:;" class="title ng-scope">项目</a> 
+                  <a href="javascript:;" class="action pbox-trigger" data-align="left">
+                  <i class="lcfont lc-approval-pending"></i>
+                  </a>
+                </div>
+                <div class="section-body ng-isolate-scope in collapse" style="height: auto;" aria-expanded="true" aria-hidden="false">
+                  <div class="project-sortable project-item-accept" draggable="false"><div class="ng-scope"><a class="section-item project" href="javascript:;" draggable="false" style=""><i class="lcfont project-icon lc-project-public" style="color: rgb(64, 202, 153);"></i> <span class="section-title ng-binding">示例项目</span> <i class="lcfont lc-approval-pending action pbox-trigger" data-align="left" ></i></a></div></div>
+                </div>
+              </div>
+
+              <div class="toc-section selectable">
+                <div class="section-header" lc-to-link="/tasks/trash" ><a class="expand-icon"><i class="lcfont lc-trash-o"></i></a> 
+                <a href="javascript:;" class="title ng-scope" translate="mission.TRASH">回收站</a>
+                </div>
+              </div>
+          </div>
+      </div>
+      <!-- 右边栏 -->
+      <div class="main-body-center module-wrapper">
+          <div class="module-header ng-scope">
+            <div class="title ng-scope"><a href="javascript:;" class="ng-binding"><i class="lcfont lc-dashboard-o"></i> 我的任务</a>
+            </div>
+            <div class="flex-panel">
+                <div class="btn-group pbox-trigger btn-filter ng-scope">
+                    <span class="prefix-icon">
+                      <i class="lcfont lc-view-grid-o"></i>
+                    </span> 
+                    <button type="button" class="btn btn-default">
+                        <span class="ng-binding">看板视图</span> 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+            </div>
+          </div>
+
+          <div class="module-body ng-scope">
+              <div class="ng-scope">
+                  <div class="task-board my-task-board" id="scrollContainer">
+                      <div class="task-board-wrapper" id="wrapperContainer">
+                         
+                         <div class="entry-wrapper ng-scope">
+                            <div class="entry-item ng-isolate-scope">
+                                <div class="entry-header ng-isolate-scope">
+                                    <div class="ng-scope">
+                                        <span class="entry-title ng-binding pbox-trigger">收件箱</span>
+                                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle ng-scope inaction" data-align="left">
+                                        </span>
+                                        <div class="progressbar-container">
+                                            <div class="progress ng-isolate-scope" value="entry | entryCompletedPercent">
+                                                <div class="progress-bar" style="width: 0%;">
+                                                </div>
+                                            </div>
+                                            <span class="ng-binding"><b class="pedding-num ng-binding">0/</b>1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry-tasks" id="entry-tasks-0">
+                                    <div class="entry-task-cont ng-isolate-scope">
+                                        <div class="task-card slide-trigger pbox-trigger">
+                                            <div class="task-main">
+                                                <a href="javascript:;" class="task-check">
+                                                <i class="lcfont lc-check-square"></i>
+                                                </a> 
+                                                <span class="task-title ng-binding">点击【新建任务】，试试创建一条新的任务↓</span>
+                                            </div>
+                                            <div class="task-summary clearfix ng-scope">
+                                                <div class="task-metadata">
+                                                    <span href="javascript:;" class="task-project color-label-1">示例项目 </span>
+                                                </div>
+                                                <div class="task-assignee lc-avatar lc-avatar-30 " title="cheer"><span class="lc-avatar-def ng-scope" style="background-color: rgb(239, 123, 164);"><div class="ng-binding">CH</div></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="entry-footer ng-scope">
+                                    <a href="javascript:;" class="btn-add ng-binding" ><i class="lcfont lc-add"></i> 添加新任务</a>
+                                </div>
+                            </div>
+                         </div>
+
+
+
+                         <div class="entry-wrapper ng-scope">
+                            <div class="entry-item ng-isolate-scope">
+                                <div class="entry-header ng-isolate-scope">
+                                    <div class="ng-scope">
+                                        <span class="entry-title ng-binding pbox-trigger">今天要做</span>
+                                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle ng-scope inaction" data-align="left">
+                                        </span>
+                                        <div class="progressbar-container">
+                                            <div class="progress ng-isolate-scope" value="entry | entryCompletedPercent">
+                                                <div class="progress-bar" style="width: 0%;">
+                                                </div>
+                                            </div>
+                                            <span class="ng-binding"><b class="pedding-num ng-binding">0/</b>1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry-tasks" id="entry-tasks-0">
+                                    <div class="entry-task-cont ng-isolate-scope">
+                                        <div class="task-card slide-trigger pbox-trigger">
+                                            <div class="task-main">
+                                                <a href="javascript:;" class="task-check">
+                                                <i class="lcfont lc-check-square"></i>
+                                                </a> 
+                                                <span class="task-title ng-binding">如果项目中的任务，只想让任务参与者能够看见，可以把任务标记未仅参与者可见</span>
+                                            </div>
+                                            <div class="task-summary clearfix ng-scope">
+                                                <div class="task-metadata">
+                                                    <span href="javascript:;" class="task-project color-label-1">示例项目 </span>
+                                                </div>
+                                                <div class="task-assignee lc-avatar lc-avatar-30 " title="cheer"><span class="lc-avatar-def ng-scope" style="background-color: rgb(239, 123, 164);"><div class="ng-binding">CH</div></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="entry-footer ng-scope">
+                                    <a href="javascript:;" class="btn-add ng-binding" ><i class="lcfont lc-add"></i> 添加新任务</a>
+                                </div>
+                            </div>
+                         </div>
+
+
+                         <div class="entry-wrapper ng-scope">
+                            <div class="entry-item ng-isolate-scope">
+                                <div class="entry-header ng-isolate-scope">
+                                    <div class="ng-scope">
+                                        <span class="entry-title ng-binding pbox-trigger">下一步要做</span>
+                                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle ng-scope inaction" data-align="left">
+                                        </span>
+                                        <div class="progressbar-container">
+                                            <div class="progress ng-isolate-scope" value="entry | entryCompletedPercent">
+                                                <div class="progress-bar" style="width: 0%;">
+                                                </div>
+                                            </div>
+                                            <span class="ng-binding"><b class="pedding-num ng-binding">0/</b>0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry-tasks" id="entry-tasks-0">
+                                    <div class="entry-task-cont ng-isolate-scope">
+                                      
+                                    </div> 
+                                </div>
+                                <div class="entry-footer ng-scope">
+                                    <a href="javascript:;" class="btn-add ng-binding" ><i class="lcfont lc-add"></i> 添加新任务</a>
+                                </div>
+                            </div>
+                         </div>
+
+                          <div class="entry-wrapper ng-scope">
+                            <div class="entry-item ng-isolate-scope">
+                                <div class="entry-header ng-isolate-scope">
+                                    <div class="ng-scope">
+                                        <span class="entry-title ng-binding pbox-trigger">以后再做</span>
+                                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle ng-scope inaction" data-align="left">
+                                        </span>
+                                        <div class="progressbar-container">
+                                            <div class="progress ng-isolate-scope" value="entry | entryCompletedPercent">
+                                                <div class="progress-bar" style="width: 0%;">
+                                                </div>
+                                            </div>
+                                            <span class="ng-binding"><b class="pedding-num ng-binding">0/</b>0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry-tasks" id="entry-tasks-0">
+                                    <div class="entry-task-cont ng-isolate-scope">
+                                      
+                                    </div> 
+                                </div>
+                                <div class="entry-footer ng-scope">
+                                    <a href="javascript:;" class="btn-add ng-binding" ><i class="lcfont lc-add"></i> 添加新任务</a>
+                                </div>
+                            </div>
+                         </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>    
+  </div>
+  </div>
+</body>
+</html>
