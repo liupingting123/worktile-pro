@@ -162,7 +162,7 @@
 
              
       <!-- 右边栏 -->
-      <div class="main-body-center ng-scope xiaote">
+      <div class="main-body-center ng-scope " id="xiaote">
           <div class="drag-over-show">
              <div class="intro ng-binding">
                <i class="fa fa-cloud-upload m-r-20"></i>松开上传文件
@@ -184,7 +184,7 @@
           </ui-view>
       </div>
       <!--  任务助手 -->
-            <div class="main-body-center ng-scope task-helper">
+          <div class="main-body-center ng-scope " id="task-helper">
           <div class="drag-over-show">
              <div class="intro ng-binding">
                <i class="fa fa-cloud-upload m-r-20"></i>松开上传文件
@@ -245,7 +245,7 @@
           </ui-view>
       </div> 
         <!--  简报助手 -->
-            <div class="main-body-center ng-scope paper-helper">
+            <div class="main-body-center ng-scope" id="paper-helper">
           <div class="drag-over-show">
              <div class="intro ng-binding">
                <i class="fa fa-cloud-upload m-r-20"></i>松开上传文件
@@ -312,22 +312,22 @@
 </html>
 <script>
    $(function(){
-    $('.xiaote').click(function(){
-      $('.xiaote').show();
-      $('.task-helper').hide();
-      $('.paper-helper').hide();
+    // $('.xiaote').click(function(){
+    //   $('.xiaote').show();
+    //   $('.task-helper').hide();
+    //   $('.paper-helper').hide();
+    // })
+    $('#paper-helper').click(function(){
+      $('#paper-helper').css('display', 'block');
+      // $('#xiaote').hide();
+      // $('#paper-helper').hide();
     })
-    $('.task-helper').click(function(){
-      $('.task-helper').show();
-      $('.xiaote').hide();
-      $('.paper-helper').hide();
-    })
-    $('.exam-task').click(function(){
-      $('.example-task').show();
-      $('.jointask').hide();
-      $('.mytask').hide();
-    }) 
-   });
+    // $('.exam-task').click(function(){
+    //   $('.example-task').show();
+    //   $('.jointask').hide();
+    //   $('.mytask').hide();
+    // }) 
+   })
   // $(function(){
   //     $('.xiaote').click(function(){
   //     $('.xiaote').show();

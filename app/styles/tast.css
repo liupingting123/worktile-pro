@@ -41,10 +41,10 @@
 .my-task-board{
     position: absolute;
 }
-.task-helper{
+#task-helper{
     display: none;
 }
-.paper-helper{
+#paper-helper{
     display: none;
 }
 .control-panel ul.color-labels li .color-label {
@@ -139,8 +139,6 @@ li{
 }
 
 .select-color ul.color-labels {
-    width: 180px !important;
-    height: 87px !important;
     margin: 0 auto;
 }
 

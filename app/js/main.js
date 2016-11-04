@@ -1,5 +1,5 @@
 function login(){  
-    var url = 'http://192.168.0.104:8080/admin/login'; 
+    var url = 'http://192.168.0.104:8080/logindo'; 
     var tree;
     $.ajax({  
         type : "POST",  
@@ -11,7 +11,6 @@ function login(){
             },  
         success : function (data){
             tree=data;
-            console.info(tree);
            if(tree.id==='null'){
             alert("不能为空");   
            }else{
