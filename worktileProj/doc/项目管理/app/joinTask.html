@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>worktile</title>
+   <link rel="stylesheet" href="styles/shared.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="styles/tast.css">
+   <script src="/bower_components/jquery/dist/jquery.js"></script>
+   <script type="text/javascript">
+    $(function() {
+        $(".toc-section").click(function() {
+      
+            $(".section-body").slideToggle();
+        });
+    });
+</script>
+</head>
+<body>
+	<div class="main-layout ng-scope">
+    <div class="app-nav-area ng-scope">
+      <div class="top-area">
+        <a href="javascript:;" class="team-logo pbox-trigger" data-placement="right" data-align="top">
+          <img width="40" align="center" alt="cheer" title="cheer" src="https://s3.cn-north-1.amazonaws.com.cn/lclogo/team_logo_default.png" /></a>
+      </div>
+      <div class="middle-area">
+        <ul>
+          <li>
+            <a href="./news.html">
+              <i class="lcfont lc-messages-o"></i>
+            </a>
+            <span class="nav-tooltip ng-scope">消息</span>
+          </li>
+
+          <li class="ng-scope active">
+            <a href="javascript:;">
+              <i class="lcfont lc-task-o"></i>
+            </a>
+            <span class="nav-tooltip">任务</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-schedule-o"></i>
+            </a>
+            <span class="nav-tooltip ">日历</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-drive-o"></i>
+            </a>
+            <span class="nav-tooltip">网盘</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-weekly-o"></i>
+            </a>
+            <span class="nav-tooltip ">简报</span></li>
+         </ul>
+      </div>
+    	</div>
+
+
+    <div class="main-body">
+      <!--  侧边栏 -->
+      <div class="main-body-side">
+          <div class="header">
+            <span class="title ng-scope">任务</span>
+            <div class="more ng-scope btn-add">
+             <a href="/add.html"><i class="lcfont lc-add-project"></i></a>
+            </div>
+          </div>
+          <div class="body-list">
+              <div class="search-area">
+                 <i class="lcfont lc-search"></i> 
+                 <input type="text" class="form-control" placeholder="搜索任务">
+              </div>
+
+              <div class="toc-section">
+                <div class="section-header">
+                  <a href="javascript:;" class="expand-icon">
+                    <i class="fa fa-caret-down" style=""></i>
+                  </a>
+                  <a href="javascript:;" class="title ng-scope">工作台</a> 
+                  <a href="javascript:;" class="action pbox-trigger" data-align="left">
+                  <i class="lcfont lc-approval-pending"></i>
+                  </a>
+                </div>
+                <div class="section-body in collapse" style="height: auto;">
+                  <ul>
+                    <li>
+                      <a class="section-item ng-binding active" href="#mytask">
+                      <i class="lcfont lc-dashboard-o item-icon"></i>我的任务
+                      <li class="ng-scope"><a class="section-item ng-binding" href="/tasks/following">
+                      <i class="lcfont lc-following-o item-icon"></i>我参与的任务
+                      </a>
+                      </li>
+                      <div class="ng-isolate-scope"></div>
+                  </ul>
+                </div>
+              </div>
+
+               <div class="toc-section">
+                <div class="section-header">
+                  <a href="javascript:;" class="expand-icon">
+                    <i class="fa fa-caret-down" style=""></i>
+                  </a>
+                  <a href="javascript:;" class="title ng-scope">项目</a> 
+                  <a href="javascript:;" class="action pbox-trigger" data-align="left">
+                  <i class="lcfont lc-approval-pending"></i>
+                  </a>
+                </div>
+                <div class="section-body ng-isolate-scope in collapse" style="height: auto;" aria-expanded="true" aria-hidden="false">
+                  <div class="project-sortable project-item-accept" draggable="false"><div class="ng-scope"><a class="section-item project" href="javascript:;" draggable="false" style=""><i class="lcfont project-icon lc-project-public" style="color: rgb(64, 202, 153);"></i> <span class="section-title ng-binding">示例项目</span> <i class="lcfont lc-approval-pending action pbox-trigger" data-align="left" ></i></a></div></div>
+                </div>
+              </div>
+
+              <div class="toc-section selectable">
+                <div class="section-header" lc-to-link="/tasks/trash" ><a class="expand-icon"><i class="lcfont lc-trash-o"></i></a> 
+                <a href="javascript:;" class="title ng-scope" translate="mission.TRASH">回收站</a>
+                </div>
+              </div>
+          </div>
+      </div>
+      <!-- 右边栏 -->
+      <div class="main-body-center module-wrapper">
+          <div class="module-header ng-scope">
+            <div class="title ng-scope"><a href="javascript:;" class="ng-binding"><i class="lcfont lc-dashboard-o"></i> 我参与的任务</a>
+            </div>
+            <div class="flex-panel">
+                <div class="btn-group pbox-trigger btn-filter ng-scope">
+                    <span class="prefix-icon"><i class="lcfont lc-schedule-o"></i></span>
+                    <button type="button" class="btn btn-default">
+                        <span class="ng-binding">按截止日期</span> 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+            </div>
+          </div>
+
+          <div class="module-body ng-scope">
+              <div class="task-add-quick ng-scope ng-isolate-scope">
+              <span class="task-add-start"><i class="lcfont lc-add"></i></span> 
+              <input type="text" class="form-control taskName ng-pristine ng-valid ng-empty ng-touched"  lc-auto-focus="" placeholder="添加新任务，按回车键（Enter）保存">
+              <div class="task-add-meta">
+              <a href="javascript:;" class="actor pbox-trigger" data-align="right"><i ng-if="!vm.task.due_date.date" class="lcfont lc-schedule-o ng-scope"></i></a><a href="javascript:;" class="actor pbox-trigger ng-isolate-scope" data-auto-adapt="true" data-align="right"  only="true" select="vm.selectMember(member)" ><i class="lcfont lc-user-add ng-scope"></i></a></div>
+              </div>
+          </div>
+      </div>    
+  </div>
+  </div>
+</body>
+</html>
