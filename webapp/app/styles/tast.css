@@ -4,6 +4,7 @@
 .header .more a{
 	color: #696969;
 }
+
 .rightbox{
 	min-width:240px;
 	border-radius: 0;
@@ -41,12 +42,15 @@
 .my-task-board{
     position: absolute;
 }
-#task-helper{
+.task-helper{
     display: none;
 }
-#paper-helper{
+.paper-helper{
     display: none;
 }
+/*.myxiaote{
+    display: none;
+}*/
 /*#xiaote{
     display: block;
 }*/

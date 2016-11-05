@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>worktile</title>
-  <link rel="stylesheet" href="styles/shared.min.css">
+   <link rel="stylesheet" href="styles/shared.min.css">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/tast.css">
    <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -71,8 +71,6 @@
          </ul>
       </div>
       </div>
-
-
     <!-- 创建项目 -->
   <div   modal-render="ture" tabindex="-1" role="dialog" class="modal fade ng-isolate-scope  in" style="z-index: 1050; display:none;">
   <div class="modal-dialog">
@@ -204,21 +202,19 @@
   <div class="notifications top-left"></div>
 
 
-
-
     <div class="main-body">
       <!--  侧边栏 -->
       <div class="main-body-side">
           <div class="header">
             <span class="title ng-scope">任务</span>
             <div class="more ng-scope btn-add">
-             <a href="javascript:;"><i class="lcfont lc-add-project addtask"></i></a>
+             <a href="javascript:;"><i class="lcfont lc-add-project"></i></a>
             </div>
           </div>
           <div class="body-list">
               <div class="search-area">
                  <i class="lcfont lc-search"></i> 
-                 <input type="text" class="form-control" placeholder="搜索任务">
+                 <input type="text" class="form-control" placeholder="搜索任务" onclick="this.value=''">
               </div>
               <ul id="accordion" class="accordion toc-section">
                 <li>
@@ -427,7 +423,7 @@
                                 <div class="entry-header ng-isolate-scope entry-add">
                                     <div class="ng-scope">
                                         <span class="entry-title ng-binding pbox-trigger">今天要做</span>
-                                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle ng-scope inaction" data-align="left">
+                                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle inaction " data-align="left">
                                         </span>
                                         <div class="progressbar-container">
                                             <div class="progress ng-isolate-scope" value="entry | entryCompletedPercent">
@@ -687,31 +683,32 @@
                   <div class="entry-item">
                     <div class="entry-header" type="board">
                       <div>
-                        <span class="entry-title ">pp</span>
-                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle" data-align="left"></span>
+                        <span class="entry-title ">开启新任务</span>
+                        <span href="javascript:;" class="ignore-elm pbox-trigger lcfont lc-arrow-down-circle down_icon" data-align="left" style="display: none;"></span>
                         <div class="progressbar-container">
                           <div class="progress ng-isolate-scope">
                             <div class="progress-bar" style="width: 60%;"></div>
                           </div>
-                          <span><b class="pedding-num ">3/</b>5</span></div>
+                          <span><b class="pedding-num ">0/</b><b class="add-count">0</b></span></div>
+ 
                           </div>
                         </div>                    
                         <div class="entry-tasks">
-                          <div class="task-card slide-trigger pbox-trigger ">
+                         <!--  <div class="task-card slide-trigger pbox-trigger ">
                             <div class="task-main">
                               <a href="javascript:;" class="task-check">
-                                <input type="checkbox" /></a>
+                                <input type="checkbox" class="join-check" /></a>
                               <span class="task-title ">ssss</span></div>
                           </div>
                           <div class="task-card slide-trigger pbox-trigger ">
                             <div class="task-main">
                               <a href="javascript:;" class="task-check">
-                                <input type="checkbox" /></a>
+                                <input type="checkbox" class="join-check" /></a>
                               <span class="task-title ">ssss</span></div>
-                          </div>
+                          </div> -->
                           <div class="entry-tasks-cont">
-                            <div class="add-composer" id="add_content">
-                              <textarea class="form-control taskName " name="newTaskName" style="overflow: hidden; word-wrap: break-word; resize: none; height: 52px;"></textarea>
+                            <div class="add-composer" id="add_content" style="display: none">
+                              <textarea class="form-control taskName " id="task_con" name="newTaskName" style="overflow: hidden; word-wrap: break-word; resize: none; height: 52px;"></textarea>
                               <div class="add-composer-actor">
                                 <a href="javascript:;" class="actor pbox-trigger">
                                   <i class="lcfont lc-schedule-o "></i>
@@ -719,7 +716,8 @@
                                 <a href="javascript:;" class="actor pbox-trigger ">
                                   <i class="lcfont lc-user-add "></i>
                                 </a><label><input type="checkbox" > <span class="checkbox-text" >仅参与者可见</span></label></div>
-                              <div class="add-composer-footer"><button class="btn btn-primary" id="sure" data-loading-text="保存中...">确定</button>
+                              <div class="add-composer-footer">
+                              <button class="btn btn-primary" id="sure" data-loading-text="保存中...">确定</button>
                                 <a class="btn btn-link ">取消</a>
                               </div>
                             </div>
@@ -751,7 +749,7 @@
 
 
   </div>
-  <div class="rightbox ng-scope" style="top: 37px; left: 1120px;">
+  <div class="rightbox ng-scope" style="top: 37px; left: 1000px;">
       <ul class="pop-menu task-menu">
            <li class="ng-scope">
               <a href="javascript:;" class="ng-binding"><i class="lcfont lc-view-grid-o"></i>看板视图<i class="lcfont lc-check ng-scope"></i></a>
@@ -974,6 +972,8 @@
 
 <script>
    $(function(){
+    //向下按钮
+    
     $('.jointask-click').click(function(){
       $('.jointask').show();
       $('.mytask').hide();
@@ -1007,14 +1007,6 @@
            $(this).hide();  
       })
 
-      $("submenu li").on("click", function() {
-          $(".submenu li").removeClass('active');
-          $(this).addClass('active');
-        });
-     // $('.section-item').click(function(event) {
-     //       $(this).toggleClass("active");
-     // });
-
     // 添加新任务
     $(".btn-primary").click(function() {
       var text_22=$(this).parents('.someclass').find("textarea");
@@ -1045,6 +1037,18 @@
      var num=$(this).parents().children('.my-task-cont').find('input.active').length;
      $(this).parents().children('.entry-header').find('.task-num').text(num+"/").show();
      })
+     //设置中选项卡
+     
+     var tabs = function(tab, con) {
+        tab.click(function() {
+          var indx = tab.index(this);
+          tab.removeClass('active');
+          $(this).addClass('active');
+          con.hide();
+          con.eq(indx).show();
+        })
+      }
+      tabs($(".modal-tab a"), $('.con'));
    });
 </script>
 <script>
@@ -1104,33 +1108,52 @@
 </script>
 <script>
   $(function(){
-    //设置中选项卡 
-     var tabs = function(tab, con) {
-        tab.click(function() {
-          var indx = tab.index(this);
-          tab.removeClass('active');
-          $(this).addClass('active');
-          con.hide();
-          con.eq(indx).show();
-        })
-      };
-      tabs($(".modal-tab a"), $('.con'));
+      //新增加的确定
+      $('body').on('click','#progress_add',function(){
+         $(this).parent().parent().find('#add_content').css('display','block');
+         $(this).hide();
+       })
+       $('body').on('click','#sure',function(){
+        var add=$(this).parent().parent().parent().parent().siblings().find('.add-count');
+        var j=add.html();
+        var i= parseInt(j); 
+           i=i+1; 
+           add.text(i).show();
+        $(this).parents().siblings('.entry-add').find('.add-count').text(i).show();   
+       $(this).parent().parent().parent().parent().siblings().find('#progress_add').show();
+       $(this).parent().parent().parent().find('#add_content').hide();
+       var text=$(this).parent().parent().find('textarea[id=task_con]');
+       var task_contant =' <div class="task-card slide-trigger pbox-trigger ">';
+           task_contant +='<div class="task-main">'  ;
+           task_contant +='<a href="javascript:;" class="task-check">'  ;  
+           task_contant +='<input type="checkbox" class="join-check"/></a>'  ;  
+           task_contant +='<span class="task-title ">'+text.val()+'</span></div></div>'  ;  
 
-     $('#progress_add').on("click",function(){
-      $('#add_content').show();
-      $(this).hide();
+           $(this).parent().parent().before(task_contant); 
+            text.val("") ;            
+                                                            
+                          
      })
-     $("#sure").on("click",function(){
-       $('#progress_add').show();
-       $('#add_content').hide();
+       $('body').on('click','.join-check',function(){
+        var add=$(this).parents().siblings('.entry-header').find('.add-count');
+        var j=add.html();
+        var i= parseInt(j);
+        var textt=$(this).parents('.task-cell-check').siblings('.task-cell-title').find('.task-title');
+        if(textt.css("text-decoration")=="none"){
+          textt.css("text-decoration","line-through");
+           
+           i=i-1; 
+           add.text(i).show();
+        }else{
+          textt.css("text-decoration","none");
+        }
      })
-
+      
      //设置对号
         $(".control-panel .color-labels li").on("click", function() {
           $(".control-panel .color-labels li").removeClass('selected');
           $(this).addClass('selected');
         });
-
         //项目设置
         $('#set').click(function() {
           $('.setting').css("display", "block");
@@ -1155,7 +1178,7 @@
           $(".section-project").css("display", "none");
           $(".section-setting").css("display", "block");
         })
-        tabs($(".modal-tab a"), $('.con'));
+       
 
         //新建列表
         $(".add_list").on("click", function() {
@@ -1169,35 +1192,33 @@
           $(".link-panel").css("display", "none");
         });
         $(".lc-show .sure").on("click", function() {
-          var text = $(".lc-show .form-control").val();
-          alert(text);
+          var text = $(".lc-show .form-control");
                       
           var Content = "<div class='entry-wrapper ignore-item'><div class='entry-item'>";
           Content += "<div class='entry-header' type='board'><div class='entry-item'><div>";
-          Content += "<span class='entry-title '>" + text +"</span>";
-          Content += "<span href='javascript:;' class='ignore-elm pbox-trigger lcfont lc-arrow-down-circle' data-align='left'></span>";
+          Content += "<span class='entry-title '>" + text.val() +"</span>";
+          Content += "<span href='javascript:;' class='ignore-elm pbox-trigger lcfont lc-arrow-down-circle down_icon' data-align='left' style='display:none'></span>";
           Content += "<div class='progressbar-container'><div class='progress'>";
           Content += "<div class='progress-bar' style='width: 60%;'></div></div>";
-          Content += "<span><b class='pedding-num '>"+3+"/</b>"+5+"</span></div></div></div>";
-          Content += "<div class='entry-tasks'>";
-          Content += "<div class='task-card slide-trigger pbox-trigger '><div class='task-main'>";
-          Content += "<a href='javascript:;' class='task-check'><input type='checkbox' /></a>";
-          Content += "<span class='task-title'>value</span></div></div>";
-          Content += "<div class='task-card slide-trigger pbox-trigger '><div class='task-main'>";
-          Content += "<a href='javascript:;' class='task-check'><input type='checkbox' /></a>";
-          Content += "<span class='task-title'>ssss</span></div></div>";
-          Content += "<div class='entry-tasks-cont'><div class='add-composer' id='add_content'>";
-          Content += "<textarea class='form-control taskName ' name='newTaskName' style='overflow: hidden; word-wrap: break-word; resize: none; height: 52px;'></textarea>";
-          Content += "<div class='add-composer-actor'><i class='lcfont lc-schedule-o '></i></a>";
-          Content += "<a href='javascript:;' class='actor pbox-trigger '><i class='lcfont lc-user-add '></i>";
-          Content += "</a><label><input type='checkbox' > <span class='checkbox-text' >仅参与者可见</span></label></div>"
+          Content += "<span><b class='pedding-num '>"+0+"/</b><b class='add-count'>"+0+"</b></span></div></div></div></div>";
+           Content += "<div class='entry-tasks'>";
+        
+          Content += "<div class='entry-tasks-cont'><div class='add-composer' id='add_content' style='display:none'>";
+          Content += "<textarea class='form-control taskName 'id='task_con' name='newTaskName' style='overflow: hidden; word-wrap: break-word; resize: none; height: 52px;'></textarea>";
+          Content += "<div class='add-composer-actor'><a href='javascript:;' class='actor pbox-trigger'><i class='lcfont lc-schedule-o '></i></a>";
+          Content += "<a href='javascript:;' class='actor pbox-trigger '><i class='lcfont lc-user-add '></i></a>";
+          Content += "<label><input type='checkbox' > <span class='checkbox-text' >仅参与者可见</span></label></div>"
           Content += "<div class='add-composer-footer'><button class='btn btn-primary' id='sure' data-loading-text='保存中...'>确定</button>"
           Content += "<a class='btn btn-link '>取消</a>"
           Content += "</div></div></div></div>";
           Content += "<div class='entry-footer'><a href='javascript:;' class='btn-add' id='progress_add'><i class='lcfont lc-add ' ></i> 添加新任务</a>"
           Content += "</div></div></div>";
           $("#add").before(Content);
+          text.val("") ;
         });
+   
+
+       //确认项目  
 
   })
 </script>
@@ -1215,8 +1236,5 @@
     $(this).addClass('selected');
 });
 });
-
-
-
 </script>
 

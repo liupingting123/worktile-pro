@@ -82,7 +82,29 @@
                     <a href="javascript:;">
                       <div class="lc-avatar lc-avatar-24 lc-avatar-avatar">
                          <img class="lc-avatar-avatar ng-scope" alt="小特" src="images/news01.png">
-                         <div class="lc-avatar-name ng-binding ng-scope">小特</div>
+                         <div class="lc-avatar-name ng-binding ng-scope xiaote1">小特</div>
+                      </div>
+                      <span class="lcfont lc-close pull-right ng-scope" href="javascript:;"></span>
+                      <span class="triangle"></span> 
+                    </a>
+                 </li>
+
+                 <li class="chat-item ng-scope">
+                    <a href="javascript:;">
+                      <div class="lc-avatar lc-avatar-24 lc-avatar-avatar">
+                         <img class="lc-avatar-avatar ng-scope" alt="小特" src="images/news04.png">
+                         <div class="lc-avatar-name ng-binding ng-scopec paper1">简报助手</div>
+                      </div>
+                      <span class="lcfont lc-close pull-right ng-scope" href="javascript:;"></span>
+                      <span class="triangle"></span> 
+                    </a>
+                 </li>
+
+                 <li class="chat-item ng-scope">
+                    <a href="javascript:;">
+                      <div class="lc-avatar lc-avatar-24 lc-avatar-avatar">
+                         <img class="lc-avatar-avatar ng-scope" alt="小特" src="images/news05.png">
+                         <div class="lc-avatar-name ng-binding ng-scope task1">任务助手</div>
                       </div>
                       <span class="lcfont lc-close pull-right ng-scope" href="javascript:;"></span>
                       <span class="triangle"></span> 
@@ -110,27 +132,7 @@
                     </a>
                  </li>
 
-                 <li class="chat-item ng-scope">
-                    <a href="javascript:;">
-                      <div class="lc-avatar lc-avatar-24 lc-avatar-avatar">
-                         <img class="lc-avatar-avatar ng-scope" alt="小特" src="images/news04.png">
-                         <div class="lc-avatar-name ng-binding ng-scope">简报助手</div>
-                      </div>
-                      <span class="lcfont lc-close pull-right ng-scope" href="javascript:;"></span>
-                      <span class="triangle"></span> 
-                    </a>
-                 </li>
-
-                 <li class="chat-item ng-scope">
-                    <a href="javascript:;">
-                      <div class="lc-avatar lc-avatar-24 lc-avatar-avatar">
-                         <img class="lc-avatar-avatar ng-scope" alt="小特" src="images/news05.png">
-                         <div class="lc-avatar-name ng-binding ng-scope">任务助手</div>
-                      </div>
-                      <span class="lcfont lc-close pull-right ng-scope" href="javascript:;"></span>
-                      <span class="triangle"></span> 
-                    </a>
-                 </li>
+                 
 
                  <li class="chat-item ng-scope">
                     <a href="javascript:;">
@@ -162,7 +164,7 @@
 
              
       <!-- 右边栏 -->
-      <div class="main-body-center ng-scope xiaote">
+      <div class="main-body-center ng-scope myxiaote">
           <div class="drag-over-show">
              <div class="intro ng-binding">
                <i class="fa fa-cloud-upload m-r-20"></i>松开上传文件
@@ -309,10 +311,21 @@
   </div>
   </div>
 <script>
-   $('#task-helper').click(function(event) {
-    $('#task-helper').css('display', 'block');
-     $('#xiaote').hide();
-     $('#paper-helper').hide();
+   $('.task1').click(function(event) {
+    $('.task-helper').show();
+     $('.myxiaote').hide();
+     $('.paper-helper').hide();
+   });
+    $('.paper1').click(function(event) {
+     $('.paper-helper').show();
+    $('.task-helper').hide();
+     $('.myxiaote').hide();
+     
+   });
+     $('.xiaote1').click(function(event) {
+      $('.myxiaote').show();
+      $('.task-helper').hide();
+     $('.paper-helper').hide();
    });
 </script>
 </body>
