@@ -1,8 +1,14 @@
 package com.snowin.controller;
 
-import com.snowin.mappers.User;
+import com.snowin.mappers.UserMapper;
+import com.snowin.model.User;
+import com.snowin.service.IUserService;
+import com.snowin.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Snowin on 2016/11/5 0005.
@@ -12,14 +18,22 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private IUserService userService;
+
     @RequestMapping(value = "logindo", method = RequestMethod.POST)
     @ResponseBody
     public User login(@ModelAttribute("user") User user) {
+        // to watch user data
+        System.out.println(user.getUsername() + ":" + user.getPassword());
+
         User result = new User();
         // 数据库查询
-        result.setUsername("snowin");
-        result.setNickname("SnowinSun");
-        result.setPassword("19940524");
+        result = userService.getUserByName(user.getUsername());
+        //result = userMapper.selectUser(user.getUsername());
+//        result.setUsername("snowin");
+//        result.setNickname("SnowinSun");
+//        result.setPassword("19940524");
 
         return result;
     }

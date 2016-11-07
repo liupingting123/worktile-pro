@@ -25,8 +25,8 @@
         <module name="worktileServer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="worktileServer" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="worktileServer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

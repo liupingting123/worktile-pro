@@ -1,12 +1,12 @@
 package com.snowin.service.impl;
 
-import com.snowin.mappers.User;
+import com.snowin.model.User;
 import com.snowin.mappers.UserMapper;
 
 import com.snowin.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 /**
  * Created by Snowin on 2016/11/5 0005.
@@ -14,11 +14,13 @@ import javax.annotation.Resource;
 
 @Service("userService")
 public class UserServiceImpl implements IUserService {
-    @Resource
+
+//    @Autowired
     private UserMapper userMapper;
 
-    public User getUserById(int userId) {
+    @Override
+    public User getUserByName(String username) {
 
-        return userMapper.selectUser(userId);
+        return userMapper.selectUser(username);
     }
 }

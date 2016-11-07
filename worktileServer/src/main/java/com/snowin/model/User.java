@@ -1,4 +1,4 @@
-package com.snowin.mappers;
+package com.snowin.model;
 
 /**
  * Created by Snowin on 2016/11/4 0004.
