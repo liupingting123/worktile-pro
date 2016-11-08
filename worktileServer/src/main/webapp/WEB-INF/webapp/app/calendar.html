@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>worktile</title>
+  <link rel="stylesheet" href="styles/shared.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/calendar.css">
+   <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="js/calendar.js"></script>
+   
+</head>
+<body>
+  <div class="main-layout ng-scope">
+    <div class="app-nav-area ng-scope">
+      <div class="top-area">
+        <a href="javascript:;" class="team-logo pbox-trigger" data-placement="right" data-align="top">
+          <img width="40" align="center" alt="cheer" title="cheer" src="https://s3.cn-north-1.amazonaws.com.cn/lclogo/team_logo_default.png" /></a>
+      </div>
+      <div class="middle-area">
+        <ul>
+          <li class="ng-scope">
+            <a href="./news.html">
+              <i class="lcfont lc-messages-o"></i>
+            </a>
+            <span class="nav-tooltip ng-scope">消息</span>
+          </li>
+
+          <li class="ng-scope">
+            <a href="./task.html">
+              <i class="lcfont lc-task-o"></i>
+            </a>
+            <span class="nav-tooltip">任务</span></li>
+          <li class="ng-scope active">
+            <a href="./calendar.html">
+              <i class="lcfont lc-last-modified"></i>
+            </a>
+            <span class="nav-tooltip  ">日历</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-drive-o"></i>
+            </a>
+            <span class="nav-tooltip">网盘</span></li>
+          <li class="ng-scope">
+            <a href="javascript:;">
+              <i class="lcfont lc-weekly-o"></i>
+            </a>
+            <span class="nav-tooltip ">简报</span></li>
+         </ul>
+      </div>
+      </div>
+
+
+    <!-- 创建项目 -->
+  <div   modal-render="ture" tabindex="-1" role="dialog" class="modal fade ng-isolate-scope  in" style="z-index: 1050; display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="ng-scope">
+        <div  class="modal-header">
+          <a href="#" class="modal-close">
+            <i class="lcfont lc-close"></i>
+          </a>
+          <h3 class="modal-title ng-scope">创建项目</h3>
+        </div>
+        <div class="modal-body ng-scope">
+          <form  class="form-horizontal w5c-form ng-oristine ng-scope ng-valid-customizer ng-invalid ng-invalid-required">
+            <div class="form-group">
+              <input lc-auto-focus="" w5c-customizer="_project.name !== vm.project.name" autofocus="" name="projectName" required="" class="form-control ng-pristine ng-valid-customizer valid ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="vm.project.name" placeholder="项目名称">
+            </div>
+            <div class="form-group select-color">
+              <ul class="color-labels ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" ng-model="vm.project.color">
+                <li  class="ng-scope selected"><span class="color-label color-label-1" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-2" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li class="ng-scope"><span class="color-label color-label-3" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li class="ng-scope"><span class="color-label color-label-4" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-5" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-6" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-7" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-8" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-9" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-10" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-11" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-12" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-13" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-14" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-15" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-16" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li><li  class="ng-scope"><span class="color-label color-label-17" ng-click="vm.select(item)">
+                  <i class="lcfont lc-check">
+                  </i></span>
+                </li>
+              </ul>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label ng-scope" translate="mission.DESCRIPTION_OF_PROJECT">项目描述</label>
+                <div class="col-sm-10 control-panel">
+                  <textarea class="form-control ng-pristine ng-untouched ng-valid valid ng-empty" rows="2" name="projectDesc" ng-model="vm.project.description" placeholder="给项目写点描述"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label ng-scope" translate="mission.VISIBILITY">可见范围</label>
+                <div class="col-sm-10 control-panel">
+                  <div class="lc-select">
+                    <select ng-model="vm.project.visibility" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-disabled="vm.visibilitySelectionDisabled">
+                      <option value="0" class="ng-binding">公开：企业所有成员都可以看见此项目</option>
+                      <option value="1" class="ng-binding">私有：只有加入的成员才能看见此项目</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group fixed-bottom-12 ng-scope" ng-if="vm.project.visibility == '1'">
+              <label class="col-sm-2 control-label ng-scope" translate="mission.PROJECT_MEMBER">项目成员</label>
+                <div class="col-sm-10 control-panel">
+                  <ul class="member-list">
+                    <li ng-repeat="member in vm.selectedMembers track by member.uid" class="ng-scope">
+                      <div class="lc-avatar lc-avatar-40 " title="caiyyblock" member="member" size="40">
+                        <span class="lc-avatar-def ng-scope" ng-if="(!member.avatar)||member.avatar=='default.png'" ng-style="member.display_name|avatarBgColor" style="background-color: rgb(243, 139, 63);">
+                          <div class="ng-binding"></div>
+                        </span>
+                      </div>
+                    </li>
+                    <li>
+                      <a class="add" href="javascript:;" ng-click="vm.step = 'selectMembers'">
+                        <i class="lcfont lc-add">
+                        
+                        </i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="form-group footer-border">
+              <div class="control-panel">
+                <a class="btn btn-link pull-right ng-scope" ng-click="$dismiss()" translate="common.CANCEL">取消</a> 
+                <button type="button" class="btn btn-primary pull-right ng-scope" w5c-form-submit="vm.create(vm.project)" loading-status="vm.isSaving" data-loading-text="确定..." translate="common.OK">确定</button> 
+                <a class="btn btn-link select-template-link ng-binding ng-scope" ng-if="!vm.isClone &amp;&amp; !vm.selectedTemplate" href="javascript:;" ng-click="vm.selectProjectTemplate()">
+                  <i class="lcfont lc-template select-template-icon">
+                  </i>从项目模板中创建
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--界面透明-->
+  <div class="modal-backdrop fade in" uib-modal-animation-class="fade" modal-in-class="in" ng-style="{'z-index': 1040 + (index &amp;&amp; 1 || 0) + index*10}" uib-modal-backdrop="modal-backdrop" modal-animation="true" style="z-index: 1040;display: none;"></div>
+  <div class="notifications top-left"></div>
+
+
+
+
+    <div class="main-body">
+      <!--  侧边栏 -->
+      <div class="main-body-side">
+         
+        <div class="header">
+          <span>日历</span>
+          <div class="more">
+            <a href="#">
+              <!-- <i><img src="images/build-calendar.png" alt="新建日历"></i> -->
+              <i class="lcfont lc-add-calendar"></i>
+            </a>
+          </div>
+        </div>
+        <!-- 导航栏的具体内容 -->
+        <div class="body-list">
+          <div class="calendar-list-wrap">
+            <!-- 导航栏日历 -->
+            <div class="calendar-panel">
+              <h6>2016年8月</h6>
+  
+              <a href="javascript:;" class="s1"><</a>
+              <a href="javascript:;" class="s2">></a>
+              <!-- <span class="s1"><</span>
+              <span class="s1">></span> -->
+                <ul class="week clear">
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ul class="day clear"></ul>
+                <div class="clear"></div>
+            </div>
+            <div class="toc-section ">我的日程</div>
+            <div class="toc-section team-calendar">
+            
+              <a href="javascript:;" ng-click="vm.calendarListCollapsed = !vm.calendarListCollapsed" class="expand-icon">
+                <i class="fa fa-caret-down rotate-90" ng-class="{true:'rotate-90'}[vm.calendarListCollapsed]" style="color: #333"></i>
+              </a>
+
+              <a href="javascript:;" class="title ng-scope" translate="calendar.GROUP_CALENDAR" style="color: #333">团队日程</a>
+
+
+              <i class="lcfont lc-approval-pending create-new-calendar" style="float: right; margin-right: 20px;color: #333">
+                
+              </i>
+
+            </div>
+            <div class="toc-section">成员日程</div>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+      <!-- 右边栏我的任务 -->
+      <div class="main-body-center module-wrapper mytask">
+
+        <!-- 创建新日历 -->
+        <div class="create-new-calendar-text">
+          <ul>
+            <li class="create-new-calendar-number">创建新日历</li>
+            <li>日历设置</li>
+            <li>显示全部日历</li>
+            <li>订阅日程</li>
+          </ul>
+
+        </div>
+
+
+
+
+
+          <div class="my-calendar-header">
+          <div class="my-calendar-head-left">
+            <button class="btn1"><</button>
+            <span class="my-calendar-time">2016年8月</span>
+            <button class="btn2">></button>
+          </div>
+          <div class="my-calendar-head-right">
+            <div class="my-calendar-create">新建</div>
+            <div class="my-calendar-date">
+              <ul>
+                <li style="background-color: #69d0d1">月</li>
+                <li>周</li>
+                <li>日</li>
+              </ul>
+            </div>
+  
+          </div>
+          
+            
+        </div>
+  
+        <div class="my-calendar-body">
+          <div class="my-calendar-panel">
+          <!-- <span class="my-calendar-time">2016年10月</span> -->
+  
+            <ul class="week1 clear1">
+                <li>周日</li>
+                <li>周一</li>
+                <li>周二</li>
+                <li>周三</li>
+                <li>周四</li>
+                <li>周五</li>
+                <li>周六</li>
+            </ul>
+              <ul class="day1 clear1 select-torebuild-calendar"></ul>
+              <div class="clear1"></div>
+
+
+  
+            
+          </div>
+        </div>
+      </div>  
+    </div>
+  
+</div>
+<!-- 添加新建日历 -->
+<div class="buildmodal-calendar">
+  
+    <div class="modal-content-calendar">
+      <div class="modal-content-header">
+        <a href="javascript:;" class="cancel11">
+          <i class="lcfont lc-close" style="color: #333"></i>
+        </a>
+        <h3>新建日历</h3>
+      </div>
+      <hr style="margin:0" />
+      <div class="modal-content-body">
+        <div class="modal-content-title">
+          <input type="text" placeholder="日历名称">
+        </div>
+
+        <div class="modal-content-selec-color">
+          <label>选择颜色</label>
+          <div class="color-panel">
+            <ul>
+              <li style="background-color: #2ED3A6;"><i class="lcfont lc-check" style="display: block;"></i></li>
+              <li style="background-color: #A4DEE5;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #2EB4D4;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #317D85;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #1780D7;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #884FF6;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #9059E7;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #D6317E;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #D24271;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #F6514A;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #EE4E4E;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #EC6846;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #E4C971;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #EFED53;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #A2F3AA;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #45DF37;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #3C9D1A;"><i class="lcfont lc-check"></i></li>
+              <li style="background-color: #50B092;"><i class="lcfont lc-check"></i></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="modal-content-visible">
+          <label>可见范围</label>
+          <select>
+            <option>公开:企业所有成员都可以看见此日历</option>
+            <option>私有:只有加入的成员才能看见此日历</option>
+          </select>
+        </div>
+
+        <div class="modal-content-member">
+          <label>日历成员</label>
+          <div class="member-text">
+            <ul>
+              <li style="color: white;background-color: #4075A5">WA</li>
+              <li><i class="lcfont lc-add"></i></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="modal-content-select">
+          <button>确定</button>
+          <a href="javascript:;" class="cancel11">取消</a>
+        </div>
+
+      </div>  
+    </div>
+
+</div>
+
+
+
+
+
+
+  <!-- 添加新建日程 -->
+<div class="buildmodal">
+    <div class="modal-dialog1 ">
+      <div class="modal-content1">
+        <div class="ng-scope1">
+          <div class="modal-header1">
+              <a href="javascript:;" class="modal-close1 cancel1" >
+                <i class="lcfont lc-close"></i>
+              </a>
+              <h3 class="modal-title1 ng-binding1">新建日程</h3>
+          </div>
+          <div class="modal-body1 ng-scope1" >
+            <form class="form-horizontal1 w5c-form1 ng-pristine1 ng-invalid1 ng-invalid-required1" >
+              <div class="form-group1">
+                <input class="form-control1 ng-pristine1 valid1 ng-empty1 ng-invalid1 ng-invalid-required1 ng-touched1" placeholder="日程安排，如下午2:00例会">
+              </div>
+              <div class="form-group1 ng-scope1 from-right1">
+                <label class="col-sm-21 control-label1 ng-scope1">日历</label>
+                <div class="col-sm-101 control-panel11">
+                  <div class="lc-select1">
+                    <select class="form-control1 ng-pristine1 ng-untouched1 ng-valid1 ng-not-empty1 ng-valid-required1">
+                      <option label="会议安排">会议安排</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div id="basicForm1 ">
+                <div class="form-group1 from-right1">
+                  <div class="form-group-begin">
+                    <label class="col-sm-21 control-label1 ng-scope1">开始</label>
+                    <div class="col-sm-51 control-panel1 date-col11">
+                      <div class="input-group1">
+                        <input type="text" class="form-control1 ng-pristine1 ng-untouched1 ng-valid1 valid1 ng-not-empty1 ng-valid-required1" placeholder="开始日期"> 
+                        <span class="input-group-addon1 ng-pristine1 ng-untouched1 ng-valid1 ng-not-empty1">
+                          <i class="lcfont lc-schedule-o"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group-end">
+                      <label class="col-sm-21 control-label1 ng-scope1">到</label>
+                      <div class="col-sm-51 control-panel1 date-col11">
+                        <div class="input-group1">
+                          <input type="text" class="form-control1 ng-pristine1 ng-untouched1 ng-valid1 valid1 ng-not-empty1 ng-valid-required1" placeholder="结束日期"> 
+                          <span class="input-group-addon1 ng-pristine1 ng-untouched1 ng-valid1 ng-not-empty1">
+                            <i class="lcfont lc-schedule-o"></i>
+                          </span>
+                        </div>
+                      </div>
+                      
+                  </div>
+                </div>
+                <div class="form-group1 from-right1">
+                  <div class="col-sm-offset-21 col-sm-31">
+                    <div class="checkbox1 checkbox-event1">
+                      <label>
+                        <input type="checkbox"  class="ng-pristine1 ng-untouched1 ng-valid1 ng-empty1">
+                        <span class="checkbox-text1 ng-scope1 check-all-day">全天</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group1 from-right1">
+                  <label class="col-sm-21 control-label1 ng-scope1 join-persons-head">参与人</label>
+                    <div class="col-sm-101 control-panel1 join-persons">
+                      <ul class="member-list1">
+                        <li class="ng-scope1 person-num1-li" >
+                          <a href="javascript:;" class="pbox-trigger1">
+                            <div class="lc-avatar1 lc-avatar-401 " title="wanghao" member="member" size="40">
+                              <span class="lc-avatar-def1 ng-scope1" style="background-color: rgb(86, 125, 190);">
+                              <div class="ng-binding1 person-num1" style="color: #fff">WA</div>
+                              </span>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="add1" href="javascript:;" ng-click="vm.step = 'selectMembers'"><i class="lcfont lc-add"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group1 from-right1 more-delec-from1">
+                <div class="col-sm-offset-21 col-sm-101">
+                  <div class="checkbox1 -checkbox1 add-more-select-head">
+                  <a href="javascript:;" class="ng-scope1 more-delec">添加更多选项</a>
+                  </div>
+                </div>
+              </div>
+              <!-- 添加更多选项 -->
+              <div class="add-more-select">
+                <div class="calendar-helper from-right1"><a href="javascript:;">打开日程排期小助手</a></div>
+                
+                <div class="add-position from-right1">
+                  <div class="position">地点</div>
+                  <input type="text">
+                </div>
+
+                <div class="add-repeat from-right1">
+                  <div class="repeat">重复</div>
+                  <div class="repeat-input">
+                    <input type="text">
+                    <span><i class="lcfont lc-edit-o"></i></span>
+                  </div>
+                  
+                </div>
+
+                <div class="add-remind from-right1">
+                  <div class="remind">提醒</div>
+                  <div class="remind-a">
+                    <a href="javascript:;">+添加新提醒</a>
+                  </div>
+
+                </div>
+
+                <div class="add-describe from-right1">
+                  <div class="describe">描述</div>
+                  <div class="describe-input">
+                    
+                  </div>
+
+                </div>
+
+                <div class="add-visual">
+                  <input type="checkbox">
+                  <div class="visual">仅参与者可见</div>
+                </div>
+
+                <div class="add-hide">
+                  <a href="javascript:;" class="hide-more-slec">隐藏更多选项</a>
+                </div>
+                  
+              </div>
+              <div class="form-group1 from-right1 from-bottom-selec">
+                <div class="col-sm-offset-2 col-sm-101 bottom-selec">
+                  <button type="button" class="btn1 btn-primary1 ng-scope1">确定</button> 
+                  <a class="btn1 btn-link1 ng-scope1 cancel1">取消</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+

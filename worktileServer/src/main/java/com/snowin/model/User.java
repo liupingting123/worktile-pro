@@ -1,11 +1,10 @@
 package com.snowin.model;
 
-/**
- * Created by Snowin on 2016/11/4 0004.
- */
 public class User {
     private String username;
+
     private String password;
+
     private String nickname;
 
     public String getUsername() {
@@ -13,7 +12,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -21,7 +20,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getNickname() {
@@ -29,6 +28,6 @@ public class User {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 }

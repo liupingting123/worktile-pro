@@ -1,14 +1,10 @@
 package com.snowin.controller;
 
-import com.snowin.mappers.UserMapper;
 import com.snowin.model.User;
 import com.snowin.service.IUserService;
-import com.snowin.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * Created by Snowin on 2016/11/5 0005.

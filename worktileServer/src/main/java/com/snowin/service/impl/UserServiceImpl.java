@@ -3,6 +3,7 @@ package com.snowin.service.impl;
 import com.snowin.mappers.UserMapper;
 import com.snowin.model.User;
 
+import com.snowin.model.UserExample;
 import com.snowin.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class UserServiceImpl implements IUserService {
 
     public User getUserByName(String username) {
 
-        return userMapper.selectUser(username);
+        return userMapper.selectByPrimaryKey(username);
     }
 
 
