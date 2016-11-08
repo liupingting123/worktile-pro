@@ -6,10 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--指明包位置，并扫描其中的注解-->
-    <context:component-scan base-package="com.snowin.controller" />
-    <!--<context:component-scan base-package="com.snowin.mappers" />-->
-    <context:component-scan base-package="com.snowin.service" />
-    <!--<context:component-scan base-package="com.snowin.model" />-->
+    <context:component-scan base-package="com.snowin" />
 
     <!-- 静态资源(js、image等)的访问 -->
     <mvc:default-servlet-handler/>
@@ -25,14 +22,12 @@
         <property name="prefix" value="/WEB-INF/page/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <!---->
 
     <!-- 配置Spring数据源 -->
-
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/worktile" />
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/worktile?serverTimezone=UTC" />
         <property name="username" value="root" />
         <property name="password" value="" />
     </bean>
@@ -48,18 +43,8 @@
     </bean>
 
     <!-- Mapper所在包名，Spring会自动查找其下的类 -->
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--<property name="basePackage" value="com.snowin.mappers" />-->
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />-->
-    <!--</bean>-->
-
-    <!--
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.snowin.mappers.UserMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.snowin.mappers" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
-    -->
-
-    <!-- 加载mybatis的配置文件 -->
-    <!-- 加载数据源 -->
 </beans>
