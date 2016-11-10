@@ -1,0 +1,932 @@
+body{
+	font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+
+
+
+.index_img {
+	margin-top:12px;
+	box-sizing:border-box;
+}
+
+
+
+
+.calendar-text{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.calendar-title{
+	position: relative;
+	float: left;
+    width: 230px;
+    height: 756px;
+    background: #eaeaea;
+}
+/*日历导航栏头部*/
+.header{
+	height: 50px;
+	font-size: 20px;
+	overflow: hidden;
+}
+.header span{
+	float: left;
+    margin: 0 15px;
+    font-size: 18px;
+    color: #333;
+    line-height: 50px;
+    font-weight: 500;
+}
+.header .more{
+	float: right;
+    margin: 0 15px;
+    line-height: 52px;
+}
+.header .more a{
+	color: #8f8f8f;
+}
+.header .more i{
+	font-size: 20px;
+}
+.header .more img{
+	width: 20px;
+	height: 20px;
+
+}
+
+/*日历导航栏内容*/
+.body-list{
+	width: 230px;
+}
+.calendar-list-wrap{
+
+}
+/*日历*/
+.calendar-panel{
+	padding-left: 15px;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+	position: relative;
+}
+.calendar-panel a{
+	text-decoration:none;
+	position:absolute;
+	color: black;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.s1{
+	left:25px;
+	top:0px;
+}
+.s2{
+	right:25px;
+	top:0px;
+}
+.calendar-panel h6{
+	
+	font-size:15px;
+	width: 200px;
+	text-align: center;
+}	
+.calendar-panel .clear:after{
+	content:'';
+	clear:both;
+	display:block;
+	height:0;
+}
+.calendar-panel li{
+    float: left;
+    width: 29px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 10px;
+}
+.week,.week1{margin-top:20px;}
+.day,.day1{margin-top:10px;margin-bottom:10px;}
+.day .pd,.day1 .pd{background:#FF830A;color:#FFFFFF;}
+/*.day .ac,.day1 .ac{color:#ccc}*/
+/*.day .ad{background:#FF830A;color:#FFFFFF;}*/
+.day .ap,.day1 .ap{color:black}
+/*.day1 .ad{
+	background: #C6F0F6;
+}*/
+.toc-section{
+	width: 230px;
+	height: 37px;
+	line-height: 37px;
+	box-sizing: border-box;
+	padding-left: 25px;
+	font-size: 15px;
+}
+
+/*日程*/
+.my-calendar{
+	float: left;
+	width: 85%;
+	
+	
+	position: absolute;
+	left: 230px;
+
+}
+/*日程头部*/
+.my-calendar-header{
+	width: 100%;
+	height: 60px;
+	box-sizing: border-box;
+	padding:15px 20px;
+	overflow: hidden;
+
+}
+.my-calendar-head-left{
+	width: 50%;
+	height: 30px;
+	float: left;
+}
+.my-calendar-head-right{
+	width: 50%;
+	height: 30px;
+	float: left;
+	position: relative;
+}
+.my-calendar-head-left button{
+	width: 30px;
+	height: 30px;
+	float: left;
+	background-color: white;
+	padding: 0;
+	border: 0;
+	cursor: pointer;
+}
+.my-calendar-head-left span{
+	width: 90px;
+	height: 30px;
+	display: block;
+	float: left;
+	line-height: 30px;
+}
+.my-calendar-create{
+	width: 80px;
+	height: 30px;
+	right: 250px;
+	position: absolute;
+	text-align: center;
+	line-height: 30px;
+	background-color: #69d0d1;
+	cursor: pointer;
+
+
+}
+.my-calendar-date{
+	
+	float: right;
+}
+.my-calendar-date ul{
+	height: 30px;
+
+
+}
+.my-calendar-date ul li{
+	float: left;
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	background-color: #F9F1F1;
+}
+/*日程身体*/
+.my-calendar-body{
+	width: 100%;
+	height: 500px;
+	margin-top:30px;
+}
+.my-calendar-panel{
+	width: 96%;
+	height: 100%;
+	/* box-sizing: border-box; */
+	margin: 0 auto;
+	/* background-color: red; */
+}
+.my-calendar-panel .week1{
+	width: 100%;
+	height: 30px;
+
+}
+.my-calendar-panel  li{
+	width: 14.28%;
+	height: 30px;
+	text-align: center;
+	float: left;
+}
+.my-calendar-panel .day1 li{
+	height: 100px;
+	/*text-align: right;*/
+	border: 0.8px;
+	cursor: pointer;
+	line-height: 100px;
+}
+.my-calendar-panel .day1 li:hover{
+	background-color: #f3f3f3;
+}
+.day1 .pd{background:#E4F1EE;color:#FFFFFF;}
+
+
+
+
+/*新建日程*/
+
+.buildmodal{
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top:0px;
+	left: 0px;
+	z-index: 10;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: rgba(0, 0, 0, 0.3);
+}
+.modal-content1{
+	width: 600px;
+	border: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 24px rgba(0,0,0,.4);
+    padding: 0 30px;
+    position: relative;
+    background-color: #fff;
+    outline: 0;
+    left: 50%;
+    margin-left: -300px;
+    top: 50px;
+}
+.modal-header1{
+	padding: 20px 0 16px;
+    border-bottom: solid 1px #f3f3f3;
+    box-sizing: border-box;
+}
+.modal-header1 h3{
+	float: left;
+	font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.42857143;
+    width: 523px;
+}
+.modal-header1 .modal-close1 a{
+	text-decoration: none;
+	float: right;
+	color: black;
+}
+
+.modal-header1 .modal-close1 a i{
+	width: 16px;
+	height: 22px;
+	
+	font-family: lcfont!important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    color: black;
+}
+.ng-touched1{
+	width: 540px;
+	border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+
+    line-height: 1.42857143;
+    color: #555;
+    display: block;
+}
+.form-group1 .control-label1 {
+    padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+}
+.form-group1 .control-panel1 {
+    padding: 0 0 0 15px;
+}
+
+.lc-select1 select {
+    padding-right: 30px;
+}
+.form-control1 {
+    border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+    
+}
+.form-group1{
+	width: 540px;
+	height: 40px;
+	overflow: hidden;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+.from-right1{
+	padding-left: 60px;
+}
+.control-panel11{
+	/*width: 435px;*/
+	height: 40px;
+	float: left;
+	margin-left: 12px;
+}
+.lc-select1{
+	width: 435px;
+	/*float: right;*/
+}
+.lc-select1 select{
+	width: 435px;
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.col-sm-21{
+	float: right;
+}
+
+.date-col11 input{
+	width: 170px;
+	margin-left: 12px;
+}
+.form-group-begin{
+	width: 240px;
+	height: 40px;
+	float: left;
+}
+.form-group-begin label{
+	float: left;
+}
+.form-group-begin span{
+	display: block;
+	
+	line-height: 40px;
+}
+.form-group-begin i{
+    width: 26px;
+    text-align: center;
+    background-color: #F6F6F6;
+}
+.form-group-begin input{
+	float: left;
+}
+.form-group-end{
+	width: 240px;
+	height: 40px;
+	float: left;
+	box-sizing: border-box;
+	padding-left: 15px;
+	position: relative;
+}
+.form-group-end i{
+    width: 26px;
+    height: 40px;
+    text-align: center;
+    background-color: #F6F6F6;
+    position: absolute;
+    left: 213px;
+    line-height: 40px;
+}
+.ng-empty1{
+	float: left;
+}
+.check-all-day{
+	line-height: 26px;
+    height: 40px;
+    display: block;
+    width: 40px;
+    float: left;
+    margin-left: 15px;
+    color: #6f8092;
+    font-weight: 400;
+}
+
+.calendar-helper{
+	margin-left: 43px;
+}
+.add-more-select-head{
+	margin-left: 43px;
+}
+
+
+.add-more-select{
+	display: none;
+	width: 540px;
+	
+
+}
+.join-persons-head{
+	float: left;
+}
+.join-persons{
+	height: 40px;
+	float: left;
+	width: 400px;
+
+
+} 
+.join-persons ul{
+	height: 40px;
+	width: 400px;
+}
+.join-persons ul li{
+	width: 40px;
+	height: 40px;
+	float: left;
+	border: 1px solid black;
+	margin-left: 12px;
+	border-radius: 5px;
+}
+.join-persons ul li a{
+	text-align: center;
+	position: relative;
+}
+.person-num1{
+	margin-top: 10px;
+
+}
+.join-persons ul li i{
+	position: absolute;
+	left: 12px;
+	top: 10px;
+	color: #333;
+}
+.person-num1-li{
+	background-color: #5A8CED;
+}
+.btn1{
+	border-radius: 3px;
+    font-weight: 500;
+    border: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 8px 36px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn-primary1 {
+    color: #fff;
+    background-color: #69d0d1;
+    border-color: #55cacb;
+}
+.btn .btn-link {
+    padding: 8px 25px;
+}
+
+
+
+/*添加更多选项*/
+
+.add-position{
+	width: 540px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.add-position .position{
+	float: left;
+	padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+.add-position input{
+	float: left;
+	border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+    margin-left: 12px;
+    width: 435px;
+}
+
+.add-repeat{
+	width: 540px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.add-repeat .repeat-input{
+	width: 435px;
+	height: 40px;
+	background-color:#fbfbfb; 
+	border-radius: 3px;
+	float: left;
+    margin-left: 12px;
+
+}
+.add-repeat .repeat{
+	float: left;
+	padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;	
+}
+.add-repeat input{
+	float: left;
+	border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+    
+    width: 385px;
+}
+.add-repeat span{
+	width: 50px;
+	height: 40px;
+	display: block;
+	float: left;
+	background: #fbfbfb;
+	border-radius: 3px;
+	position: relative;
+}
+.add-repeat span i{
+    font-family: lcfont!important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    position: absolute;
+    left: 18px;
+    top: 8px;
+}
+
+
+.add-remind{
+	width: 540px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.add-remind .remind{
+	float: left;
+	padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+}
+.add-remind .remind-a{
+	width: 435px;
+	height: 40px;
+	line-height: 40px;
+	
+	float: left;
+    margin-left: 12px;	
+}
+
+
+.add-describe{
+	width: 540px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;	
+}
+.add-describe .describe{
+	float: left;
+	padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+}
+.add-describe .describe-input{
+	float: left;
+	border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+    margin-left: 12px;
+    width: 435px;
+}
+.add-visual{
+	width: 540px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	padding-left: 104px;
+
+}
+.add-visual input{
+	float: left;
+	line-height: 40px;
+	margin-top: 11px;
+}
+.add-visual .visual{
+	height: 40px;
+	float: left;
+	margin-left: 10px;
+	line-height: 40px;
+
+}
+
+
+
+.add-hide{
+	width: 540px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-left: 104px;
+}
+
+.bottom-selec{
+	margin-left: 40px;
+}
+
+.from-bottom-selec{
+	margin-top: 0;
+}
+
+/*新建日程*/
+.team-calendar:hover{
+	background-color: #dcdcdc;
+}
+.create-new-calendar{
+	cursor: pointer;
+	position: relative;
+}
+.create-new-calendar-text{
+	width: 200px;
+	height: 150px;
+	position: fixed;
+	background-color:#fff;
+	/*border:1px solid #333;*/
+	top: 350px;
+	display: none;
+	-webkit-box-shadow: #666 0px 0px 10px;
+
+}
+.create-new-calendar-text ul{
+	width: 200px;
+	height: 150px;
+}
+.create-new-calendar-text ul li{
+	height: 25%;
+	line-height: 40px;
+	box-sizing: border-box;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.create-new-calendar-text ul li:hover{
+	background-color: #dcdcdc;
+}
+
+/*<!-- 添加新建日历 -->*/
+.buildmodal-calendar{
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top:0px;
+	left: 0px;
+	z-index: 10;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background: rgba(0, 0, 0, 0.3);
+}
+.modal-content-calendar{
+	width: 600px;
+	height: 410px;
+	background-color: #fff;
+	position: absolute;
+	left: 50%;
+	margin-left: -300px;
+	margin-top: 40px;
+	box-sizing: border-box;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius: 3px;
+}
+.modal-content-header{
+	width: 540px;
+	height: 62.4px;
+	box-sizing: border-box;
+	padding-top: 20px;
+	padding-bottom: 16px;
+
+}
+.modal-content-header a{
+	float: right;
+}
+.modal-content-header h3{
+	width: 100px;
+	float: left;
+	font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    margin:0;
+}
+
+.modal-content-title{
+	width: 540px;
+	height: 40px;
+	margin-bottom: 20px;
+}
+.modal-content-title input{
+	width: 540px;
+    border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+}
+.modal-content-selec-color{
+	width: 540px;
+	height: 80px;
+	margin-bottom: 14px;
+}
+.modal-content-selec-color label{
+    padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+}
+.color-panel {
+    padding: 0 0 0 15px;
+    float: left;
+}
+.color-panel ul{
+	width: 460px;
+	height: 80px;
+}
+.color-panel ul li{
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    background-color: red;
+    border-radius: 3px;
+    position: relative;
+}
+.color-panel ul li i{
+	display: none;
+	position: absolute;
+	left: 8px;
+	top: 7px;
+	color: white;
+}
+
+
+.modal-content-visible{
+	width: 540px;
+	height: 40px;
+	margin-bottom: 20px;
+}
+.modal-content-visible label{
+	padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+}
+.modal-content-visible select{
+	width: 460px;
+	margin-left: 12px;
+	border: 1px solid #f3f3f3;
+    background: #fbfbfb;
+    box-shadow: none;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 18px;
+}
+
+.modal-content-member{
+	width: 540px;
+	height: 48px;
+	margin-bottom: 20px;	
+}
+
+.modal-content-member label{
+	padding: 8px 0 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    float: left;	
+}
+.modal-content-member .member-text{
+	width: 460px;
+	margin-left: 12px;
+}
+
+.modal-content-member .member-text ul{
+	width: 460px;
+	height: 48px;
+
+}
+.modal-content-member .member-text ul li{
+	width: 40px;
+	height: 40px;
+	float: left;
+	border: 1px solid black;
+	border-radius: 3px;
+	margin-left: 10px;
+	line-height: 40px;
+	text-align: center;
+}
+
+
+.modal-content-select{
+	width: 540px;
+	height: 36px;
+	margin-bottom: 20px;	
+	box-sizing: border-box;
+	padding-left: 75px;	
+
+}
+.modal-content-select button{
+    border-radius: 3px;
+    font-weight: 500;
+    border: 0;
+    color: #fff;
+    background-color: #69d0d1;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 8px 36px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.modal-content-select  a{
+	border-radius: 3px;
+    font-weight: 500;
+    border: 0;
+    background-color: transparent;
+    box-shadow: none;
+    margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
