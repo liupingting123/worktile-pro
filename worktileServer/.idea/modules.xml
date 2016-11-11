@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/worktileServer.iml" filepath="$PROJECT_DIR$/worktileServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/worktilePriject.iml" filepath="$PROJECT_DIR$/worktilePriject.iml" />
     </modules>
   </component>
 </project>

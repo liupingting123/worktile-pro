@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="worktileServer" />
+        <module name="worktilePriject" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
-      <module name="worktileServer" target="1.5" />
+    <bytecodeTargetLevel>
+      <module name="worktilePriject" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
