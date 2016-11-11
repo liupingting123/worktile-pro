@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.snowin.mappers.MaskMapper" >
-  <resultMap id="BaseResultMap" type="com.snowin.model.Mask" >
-    <id column="mid" property="mid" jdbcType="INTEGER" />
-    <result column="markname" property="markname" jdbcType="VARCHAR" />
-    <result column="listid" property="listid" jdbcType="INTEGER" />
-    <result column="parentmark" property="parentmark" jdbcType="INTEGER" />
-    <result column="creator" property="creator" jdbcType="VARCHAR" />
-    <result column="creatortime" property="creatortime" jdbcType="TIMESTAMP" />
-    <result column="uptotime" property="uptotime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.worktile.mappers.MaskMapper">
+  <resultMap id="BaseResultMap" type="com.worktile.model.Mask">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="markname" jdbcType="VARCHAR" property="markname" />
+    <result column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="parentmark" jdbcType="INTEGER" property="parentmark" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="creatortime" jdbcType="TIMESTAMP" property="creatortime" />
+    <result column="uptotime" jdbcType="TIMESTAMP" property="uptotime" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.snowin.model.Mask" extends="BaseResultMap" >
-    <result column="markcontext" property="markcontext" jdbcType="LONGVARCHAR" />
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.worktile.model.Mask">
+    <result column="markcontext" jdbcType="LONGVARCHAR" property="markcontext" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -42,25 +42,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -71,43 +71,45 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     mid, markname, listid, parentmark, creator, creatortime, uptotime
   </sql>
-  <sql id="Blob_Column_List" >
+  <sql id="Blob_Column_List">
     markcontext
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.snowin.model.MaskExample" >
+  <select id="selectByExampleWithBLOBs" parameterType="com.worktile.model.MaskExample" resultMap="ResultMapWithBLOBs">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
+    'false' as QUERYID,
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from mask
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snowin.model.MaskExample" >
+  <select id="selectByExample" parameterType="com.worktile.model.MaskExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
+    'false' as QUERYID,
     <include refid="Base_Column_List" />
     from mask
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -115,17 +117,17 @@
     from mask
     where mid = #{mid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from mask
     where mid = #{mid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.snowin.model.MaskExample" >
+  <delete id="deleteByExample" parameterType="com.worktile.model.MaskExample">
     delete from mask
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.snowin.model.Mask" >
+  <insert id="insert" parameterType="com.worktile.model.Mask">
     insert into mask (mid, markname, listid, 
       parentmark, creator, creatortime, 
       uptotime, markcontext)
@@ -133,100 +135,100 @@
       #{parentmark,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{creatortime,jdbcType=TIMESTAMP}, 
       #{uptotime,jdbcType=TIMESTAMP}, #{markcontext,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.snowin.model.Mask" >
+  <insert id="insertSelective" parameterType="com.worktile.model.Mask">
     insert into mask
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="mid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
         mid,
       </if>
-      <if test="markname != null" >
+      <if test="markname != null">
         markname,
       </if>
-      <if test="listid != null" >
+      <if test="listid != null">
         listid,
       </if>
-      <if test="parentmark != null" >
+      <if test="parentmark != null">
         parentmark,
       </if>
-      <if test="creator != null" >
+      <if test="creator != null">
         creator,
       </if>
-      <if test="creatortime != null" >
+      <if test="creatortime != null">
         creatortime,
       </if>
-      <if test="uptotime != null" >
+      <if test="uptotime != null">
         uptotime,
       </if>
-      <if test="markcontext != null" >
+      <if test="markcontext != null">
         markcontext,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="mid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
         #{mid,jdbcType=INTEGER},
       </if>
-      <if test="markname != null" >
+      <if test="markname != null">
         #{markname,jdbcType=VARCHAR},
       </if>
-      <if test="listid != null" >
+      <if test="listid != null">
         #{listid,jdbcType=INTEGER},
       </if>
-      <if test="parentmark != null" >
+      <if test="parentmark != null">
         #{parentmark,jdbcType=INTEGER},
       </if>
-      <if test="creator != null" >
+      <if test="creator != null">
         #{creator,jdbcType=VARCHAR},
       </if>
-      <if test="creatortime != null" >
+      <if test="creatortime != null">
         #{creatortime,jdbcType=TIMESTAMP},
       </if>
-      <if test="uptotime != null" >
+      <if test="uptotime != null">
         #{uptotime,jdbcType=TIMESTAMP},
       </if>
-      <if test="markcontext != null" >
+      <if test="markcontext != null">
         #{markcontext,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.snowin.model.MaskExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.worktile.model.MaskExample" resultType="java.lang.Long">
     select count(*) from mask
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update mask
-    <set >
-      <if test="record.mid != null" >
+    <set>
+      <if test="record.mid != null">
         mid = #{record.mid,jdbcType=INTEGER},
       </if>
-      <if test="record.markname != null" >
+      <if test="record.markname != null">
         markname = #{record.markname,jdbcType=VARCHAR},
       </if>
-      <if test="record.listid != null" >
+      <if test="record.listid != null">
         listid = #{record.listid,jdbcType=INTEGER},
       </if>
-      <if test="record.parentmark != null" >
+      <if test="record.parentmark != null">
         parentmark = #{record.parentmark,jdbcType=INTEGER},
       </if>
-      <if test="record.creator != null" >
+      <if test="record.creator != null">
         creator = #{record.creator,jdbcType=VARCHAR},
       </if>
-      <if test="record.creatortime != null" >
+      <if test="record.creatortime != null">
         creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.uptotime != null" >
+      <if test="record.uptotime != null">
         uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.markcontext != null" >
+      <if test="record.markcontext != null">
         markcontext = #{record.markcontext,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
+  <update id="updateByExampleWithBLOBs" parameterType="map">
     update mask
     set mid = #{record.mid,jdbcType=INTEGER},
       markname = #{record.markname,jdbcType=VARCHAR},
@@ -236,11 +238,11 @@
       creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
       uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
       markcontext = #{record.markcontext,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update mask
     set mid = #{record.mid,jdbcType=INTEGER},
       markname = #{record.markname,jdbcType=VARCHAR},
@@ -249,38 +251,38 @@
       creator = #{record.creator,jdbcType=VARCHAR},
       creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
       uptotime = #{record.uptotime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.snowin.model.Mask" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.Mask">
     update mask
-    <set >
-      <if test="markname != null" >
+    <set>
+      <if test="markname != null">
         markname = #{markname,jdbcType=VARCHAR},
       </if>
-      <if test="listid != null" >
+      <if test="listid != null">
         listid = #{listid,jdbcType=INTEGER},
       </if>
-      <if test="parentmark != null" >
+      <if test="parentmark != null">
         parentmark = #{parentmark,jdbcType=INTEGER},
       </if>
-      <if test="creator != null" >
+      <if test="creator != null">
         creator = #{creator,jdbcType=VARCHAR},
       </if>
-      <if test="creatortime != null" >
+      <if test="creatortime != null">
         creatortime = #{creatortime,jdbcType=TIMESTAMP},
       </if>
-      <if test="uptotime != null" >
+      <if test="uptotime != null">
         uptotime = #{uptotime,jdbcType=TIMESTAMP},
       </if>
-      <if test="markcontext != null" >
+      <if test="markcontext != null">
         markcontext = #{markcontext,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where mid = #{mid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.snowin.model.Mask" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.worktile.model.Mask">
     update mask
     set markname = #{markname,jdbcType=VARCHAR},
       listid = #{listid,jdbcType=INTEGER},
@@ -291,7 +293,1215 @@
       markcontext = #{markcontext,jdbcType=LONGVARCHAR}
     where mid = #{mid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.snowin.model.Mask" >
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.worktile.model.Mask">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="markname" jdbcType="VARCHAR" property="markname" />
+    <result column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="parentmark" jdbcType="INTEGER" property="parentmark" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="creatortime" jdbcType="TIMESTAMP" property="creatortime" />
+    <result column="uptotime" jdbcType="TIMESTAMP" property="uptotime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.worktile.model.Mask">
+    <result column="markcontext" jdbcType="LONGVARCHAR" property="markcontext" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    mid, markname, listid, parentmark, creator, creatortime, uptotime
+  </sql>
+  <sql id="Blob_Column_List">
+    markcontext
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.worktile.model.MaskExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.worktile.model.MaskExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.MaskExample">
+    delete from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.worktile.model.Mask">
+    insert into mask (mid, markname, listid, 
+      parentmark, creator, creatortime, 
+      uptotime, markcontext)
+    values (#{mid,jdbcType=INTEGER}, #{markname,jdbcType=VARCHAR}, #{listid,jdbcType=INTEGER}, 
+      #{parentmark,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{creatortime,jdbcType=TIMESTAMP}, 
+      #{uptotime,jdbcType=TIMESTAMP}, #{markcontext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.worktile.model.Mask">
+    insert into mask
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="markname != null">
+        markname,
+      </if>
+      <if test="listid != null">
+        listid,
+      </if>
+      <if test="parentmark != null">
+        parentmark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="creatortime != null">
+        creatortime,
+      </if>
+      <if test="uptotime != null">
+        uptotime,
+      </if>
+      <if test="markcontext != null">
+        markcontext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="markname != null">
+        #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.worktile.model.MaskExample" resultType="java.lang.Long">
+    select count(*) from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mask
+    <set>
+      <if test="record.mid != null">
+        mid = #{record.mid,jdbcType=INTEGER},
+      </if>
+      <if test="record.markname != null">
+        markname = #{record.markname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentmark != null">
+        parentmark = #{record.parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatortime != null">
+        creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uptotime != null">
+        uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.markcontext != null">
+        markcontext = #{record.markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{record.markcontext,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.Mask">
+    update mask
+    <set>
+      <if test="markname != null">
+        markname = #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        listid = #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        parentmark = #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        markcontext = #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{markcontext,jdbcType=LONGVARCHAR}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.worktile.model.Mask">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="markname" jdbcType="VARCHAR" property="markname" />
+    <result column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="parentmark" jdbcType="INTEGER" property="parentmark" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="creatortime" jdbcType="TIMESTAMP" property="creatortime" />
+    <result column="uptotime" jdbcType="TIMESTAMP" property="uptotime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.worktile.model.Mask">
+    <result column="markcontext" jdbcType="LONGVARCHAR" property="markcontext" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    mid, markname, listid, parentmark, creator, creatortime, uptotime
+  </sql>
+  <sql id="Blob_Column_List">
+    markcontext
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.worktile.model.MaskExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.worktile.model.MaskExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.MaskExample">
+    delete from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.worktile.model.Mask">
+    insert into mask (mid, markname, listid, 
+      parentmark, creator, creatortime, 
+      uptotime, markcontext)
+    values (#{mid,jdbcType=INTEGER}, #{markname,jdbcType=VARCHAR}, #{listid,jdbcType=INTEGER}, 
+      #{parentmark,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{creatortime,jdbcType=TIMESTAMP}, 
+      #{uptotime,jdbcType=TIMESTAMP}, #{markcontext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.worktile.model.Mask">
+    insert into mask
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="markname != null">
+        markname,
+      </if>
+      <if test="listid != null">
+        listid,
+      </if>
+      <if test="parentmark != null">
+        parentmark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="creatortime != null">
+        creatortime,
+      </if>
+      <if test="uptotime != null">
+        uptotime,
+      </if>
+      <if test="markcontext != null">
+        markcontext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="markname != null">
+        #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.worktile.model.MaskExample" resultType="java.lang.Integer">
+    select count(*) from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mask
+    <set>
+      <if test="record.mid != null">
+        mid = #{record.mid,jdbcType=INTEGER},
+      </if>
+      <if test="record.markname != null">
+        markname = #{record.markname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentmark != null">
+        parentmark = #{record.parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatortime != null">
+        creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uptotime != null">
+        uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.markcontext != null">
+        markcontext = #{record.markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{record.markcontext,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.Mask">
+    update mask
+    <set>
+      <if test="markname != null">
+        markname = #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        listid = #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        parentmark = #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        markcontext = #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{markcontext,jdbcType=LONGVARCHAR}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.worktile.model.Mask">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="markname" jdbcType="VARCHAR" property="markname" />
+    <result column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="parentmark" jdbcType="INTEGER" property="parentmark" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="creatortime" jdbcType="TIMESTAMP" property="creatortime" />
+    <result column="uptotime" jdbcType="TIMESTAMP" property="uptotime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.worktile.model.Mask">
+    <result column="markcontext" jdbcType="LONGVARCHAR" property="markcontext" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    mid, markname, listid, parentmark, creator, creatortime, uptotime
+  </sql>
+  <sql id="Blob_Column_List">
+    markcontext
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.worktile.model.MaskExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.worktile.model.MaskExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.MaskExample">
+    delete from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.worktile.model.Mask">
+    insert into mask (mid, markname, listid, 
+      parentmark, creator, creatortime, 
+      uptotime, markcontext)
+    values (#{mid,jdbcType=INTEGER}, #{markname,jdbcType=VARCHAR}, #{listid,jdbcType=INTEGER}, 
+      #{parentmark,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{creatortime,jdbcType=TIMESTAMP}, 
+      #{uptotime,jdbcType=TIMESTAMP}, #{markcontext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.worktile.model.Mask">
+    insert into mask
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="markname != null">
+        markname,
+      </if>
+      <if test="listid != null">
+        listid,
+      </if>
+      <if test="parentmark != null">
+        parentmark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="creatortime != null">
+        creatortime,
+      </if>
+      <if test="uptotime != null">
+        uptotime,
+      </if>
+      <if test="markcontext != null">
+        markcontext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="markname != null">
+        #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.worktile.model.MaskExample" resultType="java.lang.Integer">
+    select count(*) from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mask
+    <set>
+      <if test="record.mid != null">
+        mid = #{record.mid,jdbcType=INTEGER},
+      </if>
+      <if test="record.markname != null">
+        markname = #{record.markname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentmark != null">
+        parentmark = #{record.parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatortime != null">
+        creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uptotime != null">
+        uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.markcontext != null">
+        markcontext = #{record.markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{record.markcontext,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.Mask">
+    update mask
+    <set>
+      <if test="markname != null">
+        markname = #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        listid = #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        parentmark = #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        markcontext = #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{markcontext,jdbcType=LONGVARCHAR}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.worktile.model.Mask">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="markname" jdbcType="VARCHAR" property="markname" />
+    <result column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="parentmark" jdbcType="INTEGER" property="parentmark" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="creatortime" jdbcType="TIMESTAMP" property="creatortime" />
+    <result column="uptotime" jdbcType="TIMESTAMP" property="uptotime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.worktile.model.Mask">
+    <result column="markcontext" jdbcType="LONGVARCHAR" property="markcontext" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    mid, markname, listid, parentmark, creator, creatortime, uptotime
+  </sql>
+  <sql id="Blob_Column_List">
+    markcontext
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.worktile.model.MaskExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.worktile.model.MaskExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mask
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.MaskExample">
+    delete from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.worktile.model.Mask">
+    insert into mask (mid, markname, listid, 
+      parentmark, creator, creatortime, 
+      uptotime, markcontext)
+    values (#{mid,jdbcType=INTEGER}, #{markname,jdbcType=VARCHAR}, #{listid,jdbcType=INTEGER}, 
+      #{parentmark,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{creatortime,jdbcType=TIMESTAMP}, 
+      #{uptotime,jdbcType=TIMESTAMP}, #{markcontext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.worktile.model.Mask">
+    insert into mask
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="markname != null">
+        markname,
+      </if>
+      <if test="listid != null">
+        listid,
+      </if>
+      <if test="parentmark != null">
+        parentmark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="creatortime != null">
+        creatortime,
+      </if>
+      <if test="uptotime != null">
+        uptotime,
+      </if>
+      <if test="markcontext != null">
+        markcontext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="markname != null">
+        #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.worktile.model.MaskExample" resultType="java.lang.Long">
+    select count(*) from mask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mask
+    <set>
+      <if test="record.mid != null">
+        mid = #{record.mid,jdbcType=INTEGER},
+      </if>
+      <if test="record.markname != null">
+        markname = #{record.markname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentmark != null">
+        parentmark = #{record.parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatortime != null">
+        creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uptotime != null">
+        uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.markcontext != null">
+        markcontext = #{record.markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{record.markcontext,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mask
+    set mid = #{record.mid,jdbcType=INTEGER},
+      markname = #{record.markname,jdbcType=VARCHAR},
+      listid = #{record.listid,jdbcType=INTEGER},
+      parentmark = #{record.parentmark,jdbcType=INTEGER},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      creatortime = #{record.creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{record.uptotime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.Mask">
+    update mask
+    <set>
+      <if test="markname != null">
+        markname = #{markname,jdbcType=VARCHAR},
+      </if>
+      <if test="listid != null">
+        listid = #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="parentmark != null">
+        parentmark = #{parentmark,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="creatortime != null">
+        creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uptotime != null">
+        uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markcontext != null">
+        markcontext = #{markcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.worktile.model.Mask">
+    update mask
+    set markname = #{markname,jdbcType=VARCHAR},
+      listid = #{listid,jdbcType=INTEGER},
+      parentmark = #{parentmark,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      creatortime = #{creatortime,jdbcType=TIMESTAMP},
+      uptotime = #{uptotime,jdbcType=TIMESTAMP},
+      markcontext = #{markcontext,jdbcType=LONGVARCHAR}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.Mask">
     update mask
     set markname = #{markname,jdbcType=VARCHAR},
       listid = #{listid,jdbcType=INTEGER},
