@@ -1,7 +1,7 @@
-package com.snowin.controller;
+package com.worktile.controller;
 
-import com.snowin.model.User;
-import com.snowin.service.IUserService;
+import com.worktile.model.User;
+import com.worktile.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

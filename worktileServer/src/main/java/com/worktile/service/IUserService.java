@@ -1,7 +1,7 @@
-package com.snowin.service;
+package com.worktile.service;
 
 
-import com.snowin.model.User;
+import com.worktile.model.User;
 
 /**
  * Created by Snowin on 2016/11/5 0005.
