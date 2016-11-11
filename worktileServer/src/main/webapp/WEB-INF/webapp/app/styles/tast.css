@@ -4,11 +4,15 @@
 .header .more a{
 	color: #696969;
 }
-.datepicker{
+.datepicker,.datepicker1{
     width: 70px;
     font-size: 6px;
     background: rgba(244,244,244,0);
     border: 0;
+    z-index: 999;
+}
+.join-time{
+    font-size: 8px !important;
 }
 
 .rightbox{
@@ -54,9 +58,9 @@
 .paper-helper{
     display: none;
 }
-.company-news{
+/*.company-news{
     display: none;
-}
+}*/
 .trash{
     display: none;
 }
@@ -313,6 +317,9 @@ width: 100px;
     height: 30px;
    
 }
+#color-mm{
+    margin-top: 40px;
+} 
 
 
 
@@ -531,3 +538,22 @@ width: 100px;
 .part-loading{
     display: none;
 }
+
+
+ .connectedSortable{           
+  width: 100%;
+ min-height: 40px;
+}
+.btn-info {
+    color: #fff;
+    background-color: #69d0d1!important;
+    border-color: #55cacb !important;
+}
+.entry-item{
+padding-bottom: 10px;
+}
+#progress_add{
+width: 264px;
+margin: 0 auto;
+}
+          
