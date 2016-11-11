@@ -1,5 +1,6 @@
-package com.snowin.controller;
+package com.worktile.controller;
 
+import com.worktile.model.Mask;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,8 @@ import java.util.List;
 @RequestMapping(value = "task/")
 public class TaskController {
 
-//    @RequestMapping(value = "mytask", method = RequestMethod.GET)
-//    public List<Mask>
+    @RequestMapping(value = "mytask", method = RequestMethod.GET)
+    public List<Mask> getMask(){
+        return null;
+    }
 }
