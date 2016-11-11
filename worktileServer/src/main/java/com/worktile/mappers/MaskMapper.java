@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface MaskMapper {
-    int countByExample(MaskExample example);
+    long countByExample(MaskExample example);
 
     int deleteByExample(MaskExample example);
 

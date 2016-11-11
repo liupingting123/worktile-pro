@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.worktile.mappers.UserMapper">
-  <resultMap id="BaseResultMap" type="com.worktile.model.User">
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+<mapper namespace="com.worktile.mappers.ListMapper">
+  <resultMap id="BaseResultMap" type="com.worktile.model.List">
+    <id column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="listname" jdbcType="VARCHAR" property="listname" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,16 +65,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    username, password, nickname
+    listid, pid, listname
   </sql>
-  <select id="selectByExample" parameterType="com.worktile.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.worktile.model.ListExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from user
+    from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,60 +82,70 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.worktile.model.UserExample">
-    delete from user
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from list
+    where listid = #{listid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from list
+    where listid = #{listid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.ListExample">
+    delete from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.worktile.model.User">
-    insert into user (username, password, nickname
+  <insert id="insert" parameterType="com.worktile.model.List">
+    insert into list (listid, pid, listname
       )
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}
+    values (#{listid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{listname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.worktile.model.User">
-    insert into user
+  <insert id="insertSelective" parameterType="com.worktile.model.List">
+    insert into list
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        username,
+      <if test="listid != null">
+        listid,
       </if>
-      <if test="password != null">
-        password,
+      <if test="pid != null">
+        pid,
       </if>
-      <if test="nickname != null">
-        nickname,
+      <if test="listname != null">
+        listname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
       </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
+      <if test="listname != null">
+        #{listname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.worktile.model.UserExample" resultType="java.lang.Integer">
-    select count(*) from user
+  <select id="countByExample" parameterType="com.worktile.model.ListExample" resultType="java.lang.Integer">
+    select count(*) from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update list
     <set>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
-      <if test="record.nickname != null">
-        nickname = #{record.nickname,jdbcType=VARCHAR},
+      <if test="record.listname != null">
+        listname = #{record.listname,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -143,18 +153,36 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
-    set username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR}
+    update list
+    set listid = #{record.listid,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      listname = #{record.listname,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.worktile.model.User">
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.List">
+    update list
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="listname != null">
+        listname = #{listname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where listid = #{listid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.List">
+    update list
+    set pid = #{pid,jdbcType=INTEGER},
+      listname = #{listname,jdbcType=VARCHAR}
+    where listid = #{listid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.worktile.model.List">
+    <id column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="listname" jdbcType="VARCHAR" property="listname" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -215,16 +243,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    username, password, nickname
+    listid, pid, listname
   </sql>
-  <select id="selectByExample" parameterType="com.worktile.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.worktile.model.ListExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from user
+    from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -232,60 +260,70 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.worktile.model.UserExample">
-    delete from user
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from list
+    where listid = #{listid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from list
+    where listid = #{listid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.ListExample">
+    delete from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.worktile.model.User">
-    insert into user (username, password, nickname
+  <insert id="insert" parameterType="com.worktile.model.List">
+    insert into list (listid, pid, listname
       )
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}
+    values (#{listid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{listname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.worktile.model.User">
-    insert into user
+  <insert id="insertSelective" parameterType="com.worktile.model.List">
+    insert into list
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        username,
+      <if test="listid != null">
+        listid,
       </if>
-      <if test="password != null">
-        password,
+      <if test="pid != null">
+        pid,
       </if>
-      <if test="nickname != null">
-        nickname,
+      <if test="listname != null">
+        listname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
       </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
+      <if test="listname != null">
+        #{listname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.worktile.model.UserExample" resultType="java.lang.Integer">
-    select count(*) from user
+  <select id="countByExample" parameterType="com.worktile.model.ListExample" resultType="java.lang.Integer">
+    select count(*) from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update list
     <set>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
-      <if test="record.nickname != null">
-        nickname = #{record.nickname,jdbcType=VARCHAR},
+      <if test="record.listname != null">
+        listname = #{record.listname,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -293,18 +331,36 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
-    set username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR}
+    update list
+    set listid = #{record.listid,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      listname = #{record.listname,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.worktile.model.User">
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.List">
+    update list
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="listname != null">
+        listname = #{listname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where listid = #{listid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.List">
+    update list
+    set pid = #{pid,jdbcType=INTEGER},
+      listname = #{listname,jdbcType=VARCHAR}
+    where listid = #{listid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.worktile.model.List">
+    <id column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="listname" jdbcType="VARCHAR" property="listname" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -365,16 +421,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    username, password, nickname
+    listid, pid, listname
   </sql>
-  <select id="selectByExample" parameterType="com.worktile.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.worktile.model.ListExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from user
+    from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -382,60 +438,70 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.worktile.model.UserExample">
-    delete from user
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from list
+    where listid = #{listid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from list
+    where listid = #{listid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.worktile.model.ListExample">
+    delete from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.worktile.model.User">
-    insert into user (username, password, nickname
+  <insert id="insert" parameterType="com.worktile.model.List">
+    insert into list (listid, pid, listname
       )
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}
+    values (#{listid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{listname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.worktile.model.User">
-    insert into user
+  <insert id="insertSelective" parameterType="com.worktile.model.List">
+    insert into list
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        username,
+      <if test="listid != null">
+        listid,
       </if>
-      <if test="password != null">
-        password,
+      <if test="pid != null">
+        pid,
       </if>
-      <if test="nickname != null">
-        nickname,
+      <if test="listname != null">
+        listname,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="listid != null">
+        #{listid,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
       </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
+      <if test="listname != null">
+        #{listname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.worktile.model.UserExample" resultType="java.lang.Long">
-    select count(*) from user
+  <select id="countByExample" parameterType="com.worktile.model.ListExample" resultType="java.lang.Long">
+    select count(*) from list
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update list
     <set>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.listid != null">
+        listid = #{record.listid,jdbcType=INTEGER},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
       </if>
-      <if test="record.nickname != null">
-        nickname = #{record.nickname,jdbcType=VARCHAR},
+      <if test="record.listname != null">
+        listname = #{record.listname,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -443,12 +509,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
-    set username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR}
+    update list
+    set listid = #{record.listid,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      listname = #{record.listname,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.worktile.model.List">
+    update list
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="listname != null">
+        listname = #{listname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where listid = #{listid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.worktile.model.List">
+    update list
+    set pid = #{pid,jdbcType=INTEGER},
+      listname = #{listname,jdbcType=VARCHAR}
+    where listid = #{listid,jdbcType=INTEGER}
   </update>
 </mapper>

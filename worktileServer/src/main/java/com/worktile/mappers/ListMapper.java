@@ -2,11 +2,10 @@ package com.worktile.mappers;
 
 import com.worktile.model.List;
 import com.worktile.model.ListExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ListMapper {
-    int countByExample(ListExample example);
+    long countByExample(ListExample example);
 
     int deleteByExample(ListExample example);
 
@@ -16,7 +15,7 @@ public interface ListMapper {
 
     int insertSelective(List record);
 
-    List<List> selectByExample(ListExample example);
+    java.util.List<List> selectByExample(ListExample example);
 
     List selectByPrimaryKey(Integer listid);
 

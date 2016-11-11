@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProjectUserMapper {
-    int countByExample(ProjectUserExample example);
+    long countByExample(ProjectUserExample example);
 
     int deleteByExample(ProjectUserExample example);
 

@@ -6,8 +6,8 @@
 
 <generatorConfiguration>
     <!--数据库驱动jar -->
-    <classPathEntry location="/Users/Desmond/apache-maven-3.3.9/repository/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar" />
-    <!--<classPathEntry location="./mysql-connector-java-5.1.38.jar" />-->
+    <!--<classPathEntry location="/Users/Desmond/apache-maven-3.3.9/repository/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar" />-->
+    <classPathEntry location="./lib/mysql-connector-java-5.1.21.jar" />
 
     <context
             id="DB2Tables"
