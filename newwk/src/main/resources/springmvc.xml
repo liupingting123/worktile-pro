@@ -15,15 +15,15 @@
 
 	<!-- 配置Handler 由于使用了BeanNameUrlHandlerMapping处理映射器，name配置为url -->
 	<bean id="itemController1" name="/itemList.action"
-		class="wk.first.ItemController1" />
+		class="wk.controller.ItemController1" />
 
 	<!-- handler2 -->
-	<bean id="itemController2" class="wk.first.ItemController2"></bean>
+	<bean id="itemController2" class="wk.controller.ItemController2"></bean>
 
 	<!-- 注解的handler，单个配置 -->
 	<!-- <bean class="cn.itcast.springmvc.first.ItemController3"/> -->
 	<!-- 使用spring组件扫描 -->
-	<context:component-scan base-package="wk.first" />
+	<context:component-scan base-package="wk.controller" />
 
 	<!-- 配置处理器映射器 springmvc框架根据HandlerMapping接口判断是否是处理器映射器 -->
 	<!-- 根据bean的name进行查找Handler 将action的url配置在bean的name中 -->
