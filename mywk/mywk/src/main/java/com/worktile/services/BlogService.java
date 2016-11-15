@@ -1,12 +1,13 @@
-/*
+package com.worktile.services;/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.zqgame.services;
 
-import com.zqgame.models.Blog;
-import com.zqgame.mappers.BlogMapper;
+
 import java.util.List;
+
+import com.worktile.mappers.BlogMapper;
+import com.worktile.models.Blog;
 import org.codehaus.plexus.logging.BaseLoggerManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;

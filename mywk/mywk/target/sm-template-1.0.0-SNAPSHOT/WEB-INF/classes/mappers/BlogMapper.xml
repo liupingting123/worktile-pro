@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zqgame.mappers.BlogMapper">
-	<select id="findById" parameterType="int" resultType="com.zqgame.models.Blog">
+<mapper namespace="com.worktile.mappers.BlogMapper">
+	<select id="findById" parameterType="int" resultType="com.worktile.models.Blog">
 		select * from blogs where id = #{id}
 	</select>
-	<select id="findAllBlogs" parameterType="org.noo.pagination.page.Page" resultType="com.zqgame.models.Blog">
+	<select id="findAllBlogs" parameterType="org.noo.pagination.page.Page" resultType="com.worktile.models.Blog">
 		select * from blogs
 	</select>
 
-    <insert id="save" parameterType="com.zqgame.models.Blog"
+    <insert id="save" parameterType="com.worktile.models.Blog"
         useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into blogs(title , content , comment,created_at) 
         values  (#{title},#{content},#{comment},#{created_at})

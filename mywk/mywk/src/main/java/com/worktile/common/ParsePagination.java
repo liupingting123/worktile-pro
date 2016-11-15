@@ -1,4 +1,4 @@
-package com.zqgame.common;
+package com.worktile.common;
 
 import java.util.HashMap;
 import java.util.Map;

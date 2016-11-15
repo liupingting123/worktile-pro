@@ -1,4 +1,4 @@
-package com.zqgame.models;
+package com.worktile.models;
 
 import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;

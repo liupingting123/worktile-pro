@@ -1,8 +1,7 @@
-package com.zqgame.mappers;
-
-import com.zqgame.models.User;
+package com.worktile.mappers;
 
 
+import com.worktile.models.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

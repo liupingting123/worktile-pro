@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zqgame.mappers.UserMapper">
+<mapper namespace="com.worktile.mappers.UserMapper">
 
-    <resultMap id="user" type="com.zqgame.models.User">
+    <resultMap id="user" type="com.worktile.models.User">
         <result property="id" column="id" />
         <result property="username" column="username" />
         <result property="email" column="email" />
@@ -13,7 +13,7 @@
     </resultMap>
 
 
-    <insert id="save" parameterType="com.zqgame.models.User"
+    <insert id="save" parameterType="com.worktile.models.User"
         useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO shiro_user (username, password, salt, email, created_at)
         VALUES (#{username}, #{password}, #{salt}, #{email}, CURDATE());
@@ -22,11 +22,11 @@
         </selectKey>
     </insert>
 
-    <select id="findById" parameterType="int" resultType="com.zqgame.models.User">
+    <select id="findById" parameterType="int" resultType="com.worktile.models.User">
         SELECT id, username, email FROM shiro_user WHERE id = #{id}
     </select>
 
-    <select id="findByUsername" parameterType="String" resultType="com.zqgame.models.User">
+    <select id="findByUsername" parameterType="String" resultType="com.worktile.models.User">
         SELECT id, username, email, salt, created_at FROM shiro_user
         WHERE username = #{userId}
     </select>

@@ -1,8 +1,8 @@
-package com.zqgame.mappers;
+package com.worktile.mappers;
 
+import com.worktile.models.Blog;
 import org.noo.pagination.page.Page;
 import java.util.List;
-import com.zqgame.models.Blog;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

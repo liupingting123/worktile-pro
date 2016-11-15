@@ -28,11 +28,11 @@
     </bean>
 
     <bean id="blogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.zqgame.mappers.BlogMapper" />
+        <property name="mapperInterface" value="com.worktile.mappers.BlogMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
     <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.zqgame.mappers.UserMapper" />
+        <property name="mapperInterface" value="com.worktile.mappers.UserMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 </beans>

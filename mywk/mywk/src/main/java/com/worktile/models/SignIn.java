@@ -1,4 +1,4 @@
-package com.zqgame.models;
+package com.worktile.models;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

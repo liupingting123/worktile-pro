@@ -1,8 +1,9 @@
-package com.zqgame.interceptors;
+package com.worktile.interceptors;
 
-import com.zqgame.common.ParsePagination;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.worktile.common.ParsePagination;
 import org.noo.pagination.page.PageContext;
 import org.noo.pagination.page.Pagination;
 import org.slf4j.Logger;

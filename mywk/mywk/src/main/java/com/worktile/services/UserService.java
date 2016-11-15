@@ -1,7 +1,7 @@
-package com.zqgame.services;
+package com.worktile.services;
 
-import com.zqgame.mappers.UserMapper;
-import com.zqgame.models.User;
+import com.worktile.mappers.UserMapper;
+import com.worktile.models.User;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.slf4j.Logger;
