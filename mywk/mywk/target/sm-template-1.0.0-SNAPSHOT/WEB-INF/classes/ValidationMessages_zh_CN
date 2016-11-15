@@ -1,0 +1,4 @@
+blog.title.size=长度应该为{min}到{max}
+user.password.size=长度应该为{min}到{max}
+user.captcha.size=长度应该为{min}到{max}
+user.username.size=长度应该为{min}到{max}
