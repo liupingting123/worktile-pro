@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.worktile.mappers.TTaskAssignmentMapper">
+  <resultMap id="BaseResultMap" type="com.worktile.model.TTaskAssignment">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="follower_id" jdbcType="INTEGER" property="followerId" />
+    <result column="attach_id" jdbcType="INTEGER" property="attachId" />
+    <result column="assigner_id" jdbcType="INTEGER" property="assignerId" />
+    <result column="pending1" jdbcType="VARCHAR" property="pending1" />
+    <result column="pending2" jdbcType="VARCHAR" property="pending2" />
+    <result column="pending3" jdbcType="VARCHAR" property="pending3" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, task_id, follower_id, attach_id, assigner_id, pending1, pending2, pending3
+  </sql>
+  <select id="selectByExample" parameterType="com.worktile.model.TTaskAssignmentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_task_assignment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.worktile.model.TTaskAssignmentExample">
+    delete from t_task_assignment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.worktile.model.TTaskAssignment">
+    insert into t_task_assignment (id, task_id, follower_id, 
+      attach_id, assigner_id, pending1, 
+      pending2, pending3)
+    values (#{id,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER}, #{followerId,jdbcType=INTEGER}, 
+      #{attachId,jdbcType=INTEGER}, #{assignerId,jdbcType=INTEGER}, #{pending1,jdbcType=VARCHAR}, 
+      #{pending2,jdbcType=VARCHAR}, #{pending3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.worktile.model.TTaskAssignment">
+    insert into t_task_assignment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="followerId != null">
+        follower_id,
+      </if>
+      <if test="attachId != null">
+        attach_id,
+      </if>
+      <if test="assignerId != null">
+        assigner_id,
+      </if>
+      <if test="pending1 != null">
+        pending1,
+      </if>
+      <if test="pending2 != null">
+        pending2,
+      </if>
+      <if test="pending3 != null">
+        pending3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="followerId != null">
+        #{followerId,jdbcType=INTEGER},
+      </if>
+      <if test="attachId != null">
+        #{attachId,jdbcType=INTEGER},
+      </if>
+      <if test="assignerId != null">
+        #{assignerId,jdbcType=INTEGER},
+      </if>
+      <if test="pending1 != null">
+        #{pending1,jdbcType=VARCHAR},
+      </if>
+      <if test="pending2 != null">
+        #{pending2,jdbcType=VARCHAR},
+      </if>
+      <if test="pending3 != null">
+        #{pending3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.worktile.model.TTaskAssignmentExample" resultType="java.lang.Long">
+    select count(*) from t_task_assignment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_task_assignment
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.taskId != null">
+        task_id = #{record.taskId,jdbcType=INTEGER},
+      </if>
+      <if test="record.followerId != null">
+        follower_id = #{record.followerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.attachId != null">
+        attach_id = #{record.attachId,jdbcType=INTEGER},
+      </if>
+      <if test="record.assignerId != null">
+        assigner_id = #{record.assignerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.pending1 != null">
+        pending1 = #{record.pending1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pending2 != null">
+        pending2 = #{record.pending2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pending3 != null">
+        pending3 = #{record.pending3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_task_assignment
+    set id = #{record.id,jdbcType=INTEGER},
+      task_id = #{record.taskId,jdbcType=INTEGER},
+      follower_id = #{record.followerId,jdbcType=INTEGER},
+      attach_id = #{record.attachId,jdbcType=INTEGER},
+      assigner_id = #{record.assignerId,jdbcType=INTEGER},
+      pending1 = #{record.pending1,jdbcType=VARCHAR},
+      pending2 = #{record.pending2,jdbcType=VARCHAR},
+      pending3 = #{record.pending3,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
