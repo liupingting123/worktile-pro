@@ -2,7 +2,6 @@ package com.worktile.controllers;
 
 
 
-import com.worktile.models.TUser;
 import org.hsqldb.Session;
 import org.noo.pagination.page.PageContext;
 import org.noo.pagination.page.Pagination;
@@ -30,8 +29,7 @@ public class BlogsController {
     @RequestMapping(value = "/blogs", method = RequestMethod.GET)
     public String index(Model model) {
 
-        TUser tUser = new TUser();
-        tUser.setName("hello");
+
 
         model.addAttribute("blogs", "hello");
         return "blogs/index";
