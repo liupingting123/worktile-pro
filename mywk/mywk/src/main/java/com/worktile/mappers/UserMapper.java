@@ -1,31 +1,16 @@
 package com.worktile.mappers;
 
-import java.util.List;
+
 
 import com.worktile.models.User;
-import com.worktile.models.UserExample;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository(value="userMapper")
 public interface UserMapper {
-    long countByExample(UserExample example);
-
-    int deleteByExample(UserExample example);
-
-    int deleteByPrimaryKey(String username);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    List<User> selectByExample(UserExample example);
-
-    User selectByPrimaryKey(String username);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
+	User findById(@Param("id") int id );
+	User findByUsername(@Param("username") String username );
+	void save( User user );
 }

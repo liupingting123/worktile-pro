@@ -1,7 +1,8 @@
 package com.worktile.controllers;
 
 
-
+import com.worktile.mappers.BlogMapper;
+import com.worktile.models.Blog;
 import org.hsqldb.Session;
 import org.noo.pagination.page.PageContext;
 import org.noo.pagination.page.Pagination;
@@ -24,14 +25,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BlogsController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BlogsController.class);
-    //@Resource(name = "blogMapper")
+    @Resource(name = "blogMapper")
+    private BlogMapper blogMapper;
 
     @RequestMapping(value = "/blogs", method = RequestMethod.GET)
     public String index(Model model) {
-
-
-
-        model.addAttribute("blogs", "hello");
+        Pagination pager = PageContext.getPageContext();//start
+        List<Blog> blogs = blogMapper.findAllBlogs(pager);
+        model.addAttribute("blogs", blogs);
+        model.addAttribute("pager", pager);
         return "blogs/index";
     }
 

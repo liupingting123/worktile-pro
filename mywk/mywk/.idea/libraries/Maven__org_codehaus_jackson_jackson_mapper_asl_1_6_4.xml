@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.6.4">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/res6/org/codehaus/jackson/jackson-mapper-asl/1.6.4/jackson-mapper-asl-1.6.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../res6/org/codehaus/jackson/jackson-mapper-asl/1.6.4/jackson-mapper-asl-1.6.4.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/Desktop/res6/org/codehaus/jackson/jackson-mapper-asl/1.6.4/jackson-mapper-asl-1.6.4-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../res6/org/codehaus/jackson/jackson-mapper-asl/1.6.4/jackson-mapper-asl-1.6.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/Desktop/res6/org/codehaus/jackson/jackson-mapper-asl/1.6.4/jackson-mapper-asl-1.6.4-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../res6/org/codehaus/jackson/jackson-mapper-asl/1.6.4/jackson-mapper-asl-1.6.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

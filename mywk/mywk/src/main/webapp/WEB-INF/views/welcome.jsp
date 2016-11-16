@@ -4,10 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
-	<head>
 
-	</head>
-	<body>
-		<h1>hello</h1>
+ <h1>its test ok</h1>
+
 	</body>
 </html>
