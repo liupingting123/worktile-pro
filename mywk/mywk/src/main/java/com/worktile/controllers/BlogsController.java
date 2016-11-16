@@ -25,16 +25,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BlogsController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BlogsController.class);
-    @Resource(name = "blogMapper")
-    private BlogMapper blogMapper;
+
 
     @RequestMapping(value = "/blogs", method = RequestMethod.GET)
     public String index(Model model) {
-        Pagination pager = PageContext.getPageContext();//start
-        List<Blog> blogs = blogMapper.findAllBlogs(pager);
-        model.addAttribute("blogs", blogs);
-        model.addAttribute("pager", pager);
-        return "blogs/index";
+
+        model.addAttribute("message", "hello");
+        return "blogs/show";
     }
 
 
